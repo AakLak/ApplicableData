@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Csvuploader</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>Csvuploader</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 
-
-<%= link_to "Home", root_path %>
-<%= link_to "Sales", sales_path %>
-<%= link_to "Features", nav_features_path %>
-<%= link_to "Pricing", nav_pricing_path %>
-<%= link_to "Contact", nav_contact_path %>
-
-<%= yield %>
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Sales", sales_path %></li>
+			<li><%= link_to "Features", nav_features_path %></li>
+			<li><%= link_to "Pricing", nav_pricing_path %></li>
+			<li><%= link_to "Contact", nav_contact_path %></li>
+		</ul>
+	</div>
+	<%= yield %>
 
 </body>
 </html>
