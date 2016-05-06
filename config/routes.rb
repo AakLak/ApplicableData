@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
+  get 'nav/features'
+
+  get 'nav/pricing'
+
+  get 'nav/contact'
+
   resources :sales
 
-  root to: 'sales#index'
+  root to: 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
