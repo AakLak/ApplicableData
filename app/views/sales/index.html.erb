@@ -19,9 +19,9 @@
           <td><%= sale.email %></td>
           <td><%= sale.order_date %></td>
           <td><%= sale.amount %></td>
-          <td><%= link_to 'Show', sale %></td>
-          <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-          <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', sale, class: "btn btn-primary" %></td>
+          <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-success" %></td>
+          <td><%= link_to 'Destroy', sale, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
       </tbody>
