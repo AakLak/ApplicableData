@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get 'nav/contact'
 
-  resources :sales
+  resources :sales do
+    collection {post :import}
+  end
 
   root to: 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
