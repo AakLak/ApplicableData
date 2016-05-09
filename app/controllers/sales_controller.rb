@@ -5,7 +5,12 @@ class SalesController < ApplicationController
   # GET /sales.json
   def index
     @sales = Sale.all
-  end
+    @num_orders = Sale.group(:email).count
+    @last_date = Sale.group(:email).maximum(:order_date)
+    @sums = Sale.group(:email).sum(:amount)
+    @emails = Sale.pluck(:email).uniq
+    
+  end     
 
   # GET /sales/1
   # GET /sales/1.json
@@ -76,4 +81,5 @@ class SalesController < ApplicationController
     def sale_params
       params.require(:sale).permit(:email, :order_date, :amount)
     end
-end
+
+  end

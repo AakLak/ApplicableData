@@ -3,7 +3,7 @@ class CreateSales < ActiveRecord::Migration
     create_table :sales do |t|
       t.string :email
       t.date :order_date
-      t.decimal :amount
+      t.float :amount
 
       t.timestamps null: false
     end

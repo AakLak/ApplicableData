@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160506122025) do
   create_table "sales", force: :cascade do |t|
     t.string   "email"
     t.date     "order_date"
-    t.decimal  "amount"
+    t.float    "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

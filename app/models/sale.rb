@@ -5,4 +5,8 @@ class Sale < ActiveRecord::Base
 			Sale.create! row.to_hash
 		end
 	end
+
+	def emails
+		self.pluck('DISTINCT email')
+	end
 end
