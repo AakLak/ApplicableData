@@ -23,6 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #I ADDED THESE #
 gem 'bootstrap-sass'
+gem 'devise'
 #I ADDED THESE #
 
 # Use ActiveModel has_secure_password

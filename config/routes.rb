@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'welcome/index'
 
   get 'nav/features'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
     collection {post :import}
   end
 
-  root to: 'welcome#index'
+  root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
