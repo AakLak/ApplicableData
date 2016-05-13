@@ -1,8 +1,9 @@
 require 'csv'
 class Sale < ActiveRecord::Base
-	def self.import(file)
+	belongs_to :user
+	def self.import(file, user_id)
 		CSV.foreach(file.path, headers:true) do |row|
-			Sale.create! row.to_hash
+			Sale.create! row.to_hash.merge(user_id: user_id)
 		end
 	end
 

@@ -4,12 +4,11 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all
+    @sales = current_user.sales
     @num_orders = Sale.group(:email).count
     @last_date = Sale.group(:email).maximum(:order_date)
     @sums = Sale.group(:email).sum(:amount)
     @emails = Sale.pluck(:email).uniq
-    
   end     
 
   # GET /sales/1
@@ -19,7 +18,8 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
-    @sale = Sale.new
+    # @sale = Sale.new
+    @sale = current_user.sales.build
   end
 
   # GET /sales/1/edit
@@ -29,8 +29,8 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    @sale = Sale.new(sale_params)
-
+    #@sale = Sale.new(sale_params)
+    @sale = current_user.sales.build(sale_params)
     respond_to do |format|
       if @sale.save
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
@@ -67,7 +67,7 @@ class SalesController < ApplicationController
   end
 
   def import
-    Sale.import(params[:file])
+    Sale.import(params[:file], current_user.id)
     redirect_to sales_path, notice: "Sales Data Imported Successfully"
   end
 
