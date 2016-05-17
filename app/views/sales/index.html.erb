@@ -4,6 +4,23 @@
 <h1>Listing Sales</h1>
 <div class="media">
   <div class="media-body">
+<!--   Two dimensinoal array [email, num_orders]
+  Sorted by most to least num_order -->
+  <% @count_sales.to_a.sort_by(&:last).reverse %></br>
+
+
+  <% @last_sale.each do |sale| %>
+  <%= sale.order_date %>
+  <%= sale.email %></br>
+  <% end %>
+    <%# @sales.last_order.each do |lo| %>
+    <%#= lo.order_date %>
+    <%# end %>
+
+    <%# @sales.old_to_new.each do |sale| %>
+      <%#= sale.email %>
+    <%# end %>
+
     <table class="table table-hover">
       <thead>
         <tr>
@@ -35,7 +52,7 @@
       </thead>
 
       <tbody>
-        <% @sales.each do |sale| %>
+        <% @sales.old_to_new.each do |sale| %>
         <tr>
           <td><%= sale.email %></td>
           <td><%= sale.order_date %></td>

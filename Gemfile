@@ -42,6 +42,8 @@ group :development, :test do
   gem 'sqlite3'
   # server keeper
   gem 'spring'
+  # Table Print
+  gem 'hirb'
 end
 
 group :development do

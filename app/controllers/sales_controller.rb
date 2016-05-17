@@ -5,6 +5,8 @@ class SalesController < ApplicationController
   # GET /sales.json
   def index
     @sales = current_user.sales
+    @count_sales = Sale.where(user_id: current_user.id).group(:email).count
+    @last_sale = Sale.where(user_id: current_user.id).group(:email).order(:order_date)
     @num_orders = Sale.group(:email).count
     @last_date = Sale.group(:email).maximum(:order_date)
     @sums = Sale.group(:email).sum(:amount)
