@@ -8,6 +8,18 @@ class Sale < ActiveRecord::Base
 		end
 	end
 
+	def self.most_purchases
+		self.group(:email).count.values.max
+	end
+
+	def self.orders
+		self.group(:email).order("order_date ASC")
+	end
+
+	def self.consolidated
+		self.group(:email).order("order_date DESC")
+	end
+
 	def self.emails
 		self.pluck('DISTINCT email')
 	end
@@ -17,11 +29,12 @@ class Sale < ActiveRecord::Base
 	end
 
 	def self.num_orders
-		self.group(:email).count
-	end
-
-	def self.last_order
-		self.group(:email).order(:order_date)
+		email_orders = self.group(:email).count.to_a
+		orders_email = []
+		email_orders.each do |elem|
+			orders_email << elem.reverse
+		end
+		orders_email
 	end
 
 end
