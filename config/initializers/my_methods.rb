@@ -1,7 +1,3 @@
-def blah
-	return 'blahhh'
-end
-
 def score(percent)
 	case percent
 	when 0.0..0.2

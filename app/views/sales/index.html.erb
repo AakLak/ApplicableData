@@ -22,6 +22,7 @@
         <th># of Orders</th>
         <th>Order Percentile</th>
         <th>F</th>
+        <th>Order Ttoal</th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +36,7 @@
           <td><%= @sales.group(:email).count.values_at(customer.email).first.to_f%></td>
           <td><%= @sales.group(:email).count.values_at(customer.email).first.to_f/ @most_purchases %></td>
           <td><%= score(@sales.group(:email).count.values_at(customer.email).first.to_f/ @most_purchases) %></td>
+          <td><%= @sales.where(email: customer.email).sum(:amount) %></td>
         </tr>
       <% end %>
     </tbody>
