@@ -4,18 +4,16 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = current_user.sales
-    @most_purchases = @sales.most_purchases
-    @newest_purchase = @sales.orders.last.order_date
-    @oldest_purchase = @sales.orders.first.order_date
-    @spread = (@newest_purchase - @oldest_purchase).to_f
-    #@count_sales = Sale.where(user_id: current_user.id).group(:email).count
-    #@last_sale = Sale.where(user_id: current_user.id).group(:email).order(:order_date)
-    #@last_date = Sale.group(:email).maximum(:order_date)
-    #@sums = Sale.group(:email).sum(:amount)
-    #@emails = Sale.pluck(:email).uniq
-    #@num_orders = Sale.group(:email).count
-    #@purchase_dates = @sales.c
+    if current_user
+      @sales = current_user.sales
+      if @sales.length > 1 
+        @most_purchases = @sales.most_purchases
+        @newest_purchase = @sales.orders.last.order_date
+        @oldest_purchase = @sales.orders.first.order_date
+        @spread = (@newest_purchase - @oldest_purchase).to_f
+        @max_spent = @sales.max_spent
+      end
+    end
   end     
 
   # GET /sales/1

@@ -1,4 +1,3 @@
-require 'csv'
 class Sale < ActiveRecord::Base
 	belongs_to :user
 
@@ -20,14 +19,6 @@ class Sale < ActiveRecord::Base
 		self.group(:email).order("order_date DESC")
 	end
 
-	def self.emails
-		self.pluck('DISTINCT email')
-	end
-
-	def self.old_to_new
-		self.order(:order_date)
-	end
-
 	def self.num_orders
 		email_orders = self.group(:email).count.to_a
 		orders_email = []
@@ -37,4 +28,8 @@ class Sale < ActiveRecord::Base
 		orders_email
 	end
 
+	def self.max_spent
+		email_totals = self.group(:email).sum(:amount)
+		email_totals.values.max
+	end
 end

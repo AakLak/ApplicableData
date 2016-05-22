@@ -8,59 +8,48 @@
     Max Orders: <%= @most_purchases %> </br>
     Oldest Purchase: <%= @oldest_purchase %> <br>
     Newest Purchase: <%= @newest_purchase %> <br>
-    Purchase Spread: <%= @spread %> <br>
+    Purchase Spread: <%= @spread %> Days<br>
+    Max Spent <%= @max_spent %><br>
   </h3>
 
   <table class="table table-hover">
     <thead>
       <tr>
         <th>Email</th>
-        <th>Latest Order</th>
-        <th>Days Since</th>
-        <th>Recency Percentile</th>
+        <!-- <th>Latest Order</th> -->
+        <!-- <th>Days Since</th> -->
+        <!-- <th>Recency Percentile</th> -->
         <th>R</th>
-        <th># of Orders</th>
-        <th>Order Percentile</th>
+        <!-- <th># of Orders</th> -->
+        <!-- <th>Order Percentile</th> -->
         <th>F</th>
-        <th>Order Ttoal</th>
+        <!-- <th>Order Ttoal</th> -->
+        <!-- <th>Order Percentile</th> -->
+        <th>M</th>
       </tr>
     </thead>
     <tbody>
        <% @sales.consolidated.each do |customer| %>
         <tr>
           <td><%= customer.email %></td>
-          <td><%= customer.order_date %></td>
-          <td><%= (customer.order_date - @oldest_purchase).to_f %></td>
-          <td><%= (customer.order_date - @oldest_purchase).to_f/@spread %></td>
-          <td><%= score((customer.order_date - @oldest_purchase).to_f/@spread) %></td>
-          <td><%= @sales.group(:email).count.values_at(customer.email).first.to_f%></td>
-          <td><%= @sales.group(:email).count.values_at(customer.email).first.to_f/ @most_purchases %></td>
+          <!-- <td><%= customer.order_date %></td> -->
+          <!-- <td><%= (customer.order_date - @oldest_purchase).to_f %></td> -->
+          <!-- <td><%= (customer.order_date - @oldest_purchase).to_f/@spread %></td> -->
+          <td><%= score(((customer.order_date - @oldest_purchase).to_f/@spread).round(2)) %></td>
+          <!-- <td><%= @sales.group(:email).count.values_at(customer.email).first.to_f%></td> -->
+          <!-- <td><%= @sales.group(:email).count.values_at(customer.email).first.to_f/ @most_purchases %></td> -->
           <td><%= score(@sales.group(:email).count.values_at(customer.email).first.to_f/ @most_purchases) %></td>
-          <td><%= @sales.where(email: customer.email).sum(:amount) %></td>
+          <!-- <td><%= @sales.where(email: customer.email).sum(:amount) %></td> -->
+          <!-- <td><%= (@sales.where(email: customer.email).sum(:amount)/@max_spent) %></td> -->
+          <td><%= score((@sales.where(email: customer.email).sum(:amount)/@max_spent).round(2)) %></td>
         </tr>
       <% end %>
     </tbody>
  </table>
 
 
-<!--   Two dimensinoal array [email, num_orders]
-  Sorted by most to least num_order -->
-
-  <%#= @count_sales.to_a.sort_by(&:last).reverse %></br>
 
 
-  <%# @last_sale.each do |sale| %>
-  <%#= sale.order_date %>
-  <%#= sale.email %></br>
-  <%# end %>
-
-    <%# @sales.last_order.each do |lo| %>
-    <%#= lo.order_date %>
-    <%# end %>
-
-    <%# @sales.old_to_new.each do |sale| %>
-      <%#= sale.email %>
-    <%# end %>
 
   <!--
     <table class="table table-hover">
@@ -75,7 +64,7 @@
       </thead>
 
        <tbody>
-        <% @sales.old_to_new.each do |sale| %>
+        <% @sales.consolidated.each do |sale| %>
         <tr>
           <td><%= sale.email %></td>
           <td><%= sale.order_date %></td>
