@@ -13,7 +13,15 @@ class SalesController < ApplicationController
         @spread = (@newest_purchase - @oldest_purchase).to_f
         @max_spent = @sales.max_spent
       end
+
+
+      respond_to do |format|
+        format.html
+        # format.csv {send_data @sales}
+      end
+
     end
+    render stream: true
   end     
 
   # GET /sales/1
