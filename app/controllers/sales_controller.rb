@@ -21,7 +21,7 @@ class SalesController < ApplicationController
       end
 
     end
-    render stream: true
+    # render stream: true
   end     
 
   # GET /sales/1
