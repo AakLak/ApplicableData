@@ -7,6 +7,12 @@ class Sale < ActiveRecord::Base
 		end
 	end
 
+	def self.to_csv
+		CSV.generate(headers: true) do |csv|
+
+		end
+	end
+
 	def self.most_purchases
 		self.group(:email).count.values.max
 	end

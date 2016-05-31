@@ -17,7 +17,7 @@ class SalesController < ApplicationController
 
       respond_to do |format|
         format.html
-        # format.csv {send_data @sales}
+        format.csv {send_data @sales.to_csv}
       end
 
     end
