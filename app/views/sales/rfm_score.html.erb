@@ -4,47 +4,43 @@
 
 <% if user_signed_in? %>
 <h1>Listing Sales</h1>
-<div class="media">
-	<div class="media-body">
-		<h3>
-			Max Orders: <%= @most_purchases %> </br>
-			Oldest Purchase: <%= @oldest_purchase %> <br>
-			Newest Purchase: <%= @newest_purchase %> <br>
-			Purchase Spread: <%= @spread %> Days<br>
-			Max Spent <%= @max_spent %><br>
-		</h3>
-		<div id="scrollme">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Email</th>
-						<th>Last Purchase Date</th>
-						<th># of Orders</th>
-						<th>Order Ttoal</th>
-						<th>R</th>
-						<th>F</th>
-						<th>M</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @sales.consolidated.each do |customer| %>
-					<tr>
-						<td><%= customer.email %></td>
-						<td><%= customer.order_date %></td>
-						<td><%= @sales.group(:email).count.values_at(customer.email).first.to_f%></td>
-						<td><%= @sales.where(email: customer.email).sum(:amount).round(2) %></td>
-						<td><%= score(((customer.order_date - @oldest_purchase).to_f/@spread).round(2)) %></td>
-						<td><%= score(@sales.group(:email).count.values_at(customer.email).first.to_f/ @most_purchases) %></td>
-						<td><%= score((@sales.where(email: customer.email).sum(:amount)/@max_spent).round(2)) %></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
 
-
-	</div>
+<h3>
+	Max Orders: <%= @most_purchases %> </br>
+	Oldest Purchase: <%= @oldest_purchase %> <br>
+	Newest Purchase: <%= @newest_purchase %> <br>
+	Purchase Spread: <%= @spread %> Days<br>
+	Max Spent <%= @max_spent %><br>
+</h3>
+<div id="scrollme">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Email</th>
+				<th>Last Purchase Date</th>
+				<th># of Orders</th>
+				<th>Order Ttoal</th>
+				<th>R</th>
+				<th>F</th>
+				<th>M</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @sales.consolidated.each do |customer| %>
+			<tr>
+				<td><%= customer.email %></td>
+				<td><%= customer.order_date %></td>
+				<td><%= @sales.group(:email).count.values_at(customer.email).first.to_f%></td>
+				<td><%= @sales.where(email: customer.email).sum(:amount).round(2) %></td>
+				<td><%= score(((customer.order_date - @oldest_purchase).to_f/@spread).round(2)) %></td>
+				<td><%= score(@sales.group(:email).count.values_at(customer.email).first.to_f/ @most_purchases) %></td>
+				<td><%= score((@sales.where(email: customer.email).sum(:amount)/@max_spent).round(2)) %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
 </div>
+
 
 
 <br>

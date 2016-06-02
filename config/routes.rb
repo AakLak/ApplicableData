@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post :import
       get 'rfm_score'
       get 'lifecycle_grid'
+      get 'upload'
     end
 
   end

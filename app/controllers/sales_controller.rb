@@ -48,6 +48,11 @@ class SalesController < ApplicationController
   def lifecycle_grid
     
   end
+
+  def upload
+    
+  end
+  
   # GET /sales/1
   # GET /sales/1.json
   def show
