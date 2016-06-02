@@ -12,11 +12,11 @@
 			<li><%= link_to "Home", root_path %></li>
 			<li><%= link_to "Upload", 'sales/upload' %></li>
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <span class="caret"></span></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">View Data <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">Login</a></li>
+					<li><a href="/sales/rfm_score">RFM Score</a></li>
 					<li class="divider"></li>
-					<li><%= link_to 'Create a todo', '/sales/rfm_score' %></li>
+					<li><%= link_to 'Lifecycle Grid', '/sales/lifecycle_grid' %></li>
 				</ul>
 			</li>
 			<li><%= link_to "Features", nav_features_path %></li>

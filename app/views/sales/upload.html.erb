@@ -1,7 +1,13 @@
 <h3>Import Sales Data</h3>
 <%= form_tag import_sales_path, multipart: true do %>
+<span class="btn btn-large btn-warning btn-file">
+Select File
 <%= file_field_tag :file %>
+</span>
+
 <%= submit_tag "Upload" %>
+
+
 <% end %>
 
 <%= link_to 'New Sale', new_sale_path %>
