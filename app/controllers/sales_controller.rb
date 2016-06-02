@@ -22,8 +22,11 @@ class SalesController < ApplicationController
 
     end
     # render stream: true
-  end     
+  end  
 
+  def rfm_score
+    
+  end
   # GET /sales/1
   # GET /sales/1.json
   def show

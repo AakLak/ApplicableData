@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   get 'nav/contact'
 
   resources :sales do
-    collection {post :import}
+    collection do
+      post :import
+      get 'rfm_score'
+    end
+
   end
 
   root 'welcome#index'
