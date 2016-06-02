@@ -44,6 +44,10 @@ class SalesController < ApplicationController
     end
     # render stream: true  
   end
+
+  def lifecycle_grid
+    
+  end
   # GET /sales/1
   # GET /sales/1.json
   def show

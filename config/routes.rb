@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection do
       post :import
       get 'rfm_score'
+      get 'lifecycle_grid'
     end
 
   end
