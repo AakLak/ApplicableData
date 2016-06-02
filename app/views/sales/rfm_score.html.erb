@@ -1,1 +1,97 @@
-<h1> WOO </h1>
+<p id="notice"><%= notice %></p>
+
+<% if user_signed_in? %>
+<h1>Listing Sales</h1>
+<div class="media">
+  <div class="media-body">
+  <h3>
+    Max Orders: <%= @most_purchases %> </br>
+    Oldest Purchase: <%= @oldest_purchase %> <br>
+    Newest Purchase: <%= @newest_purchase %> <br>
+    Purchase Spread: <%= @spread %> Days<br>
+    Max Spent <%= @max_spent %><br>
+  </h3>
+  <div id="scrollme">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <!-- <th>Latest Order</th> -->
+        <!-- <th>Days Since</th> -->
+        <!-- <th>Recency Percentile</th> -->
+        <th>R</th>
+        <!-- <th># of Orders</th> -->
+        <!-- <th>Order Percentile</th> -->
+        <th>F</th>
+        <!-- <th>Order Ttoal</th> -->
+        <!-- <th>Order Percentile</th> -->
+        <th>M</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% @sales.consolidated.each do |customer| %>
+        <tr>
+          <td><%= customer.email %></td>
+          <!-- <td><%= customer.order_date %></td> -->
+          <!-- <td><%= (customer.order_date - @oldest_purchase).to_f %></td> -->
+          <!-- <td><%= (customer.order_date - @oldest_purchase).to_f/@spread %></td> -->
+          <td><%= score(((customer.order_date - @oldest_purchase).to_f/@spread).round(2)) %></td>
+          <!-- <td><%= @sales.group(:email).count.values_at(customer.email).first.to_f%></td> -->
+          <!-- <td><%= @sales.group(:email).count.values_at(customer.email).first.to_f/ @most_purchases %></td> -->
+          <td><%= score(@sales.group(:email).count.values_at(customer.email).first.to_f/ @most_purchases) %></td>
+          <!-- <td><%= @sales.where(email: customer.email).sum(:amount) %></td> -->
+          <!-- <td><%= (@sales.where(email: customer.email).sum(:amount)/@max_spent) %></td> -->
+          <td><%= score((@sales.where(email: customer.email).sum(:amount)/@max_spent).round(2)) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+ </table>
+</div>
+
+
+
+
+  <!--
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Order date</th>
+          <th>Amount</th>
+          <th>Number of Order </th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+       <tbody>
+        <% @sales.consolidated.each do |sale| %>
+        <tr>
+          <td><%= sale.email %></td>
+          <td><%= sale.order_date %></td>
+          <td><%= sale.amount %></td>
+          <td><%= %></td>
+          <td><%= link_to 'Show', sale, class: "btn btn-primary" %></td>
+          <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-success" %></td>
+          <td><%= link_to 'Destroy', sale, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody> 
+    </table>-->
+  </div>
+</div>
+
+
+<br>
+
+<h3>Import Sales Data</h3>
+<%= form_tag import_sales_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload" %>
+<% end %>
+
+<%= link_to 'New Sale', new_sale_path %>
+<% else %>
+
+<p class="alert alert-danger">You must be signed in to view this page</p>
+
+<% end %>

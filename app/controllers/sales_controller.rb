@@ -25,7 +25,24 @@ class SalesController < ApplicationController
   end  
 
   def rfm_score
-    
+  if current_user
+      @sales = current_user.sales
+      if @sales.length > 1 
+        @most_purchases = @sales.most_purchases
+        @newest_purchase = @sales.orders.last.order_date
+        @oldest_purchase = @sales.orders.first.order_date
+        @spread = (@newest_purchase - @oldest_purchase).to_f
+        @max_spent = @sales.max_spent
+      end
+
+
+      respond_to do |format|
+        format.html
+        format.csv {send_data @sales.to_csv}
+      end
+
+    end
+    # render stream: true  
   end
   # GET /sales/1
   # GET /sales/1.json
