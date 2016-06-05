@@ -10,7 +10,7 @@
 	<div class="container">
 		<ul class="nav nav-tabs">
 			<li><%= link_to "Home", root_path %></li>
-			<li><%= link_to "Upload", 'sales/upload' %></li>
+			<li><%= link_to "Upload", '/sales/upload' %></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">View Data <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
@@ -22,7 +22,6 @@
 			<li><%= link_to "Features", nav_features_path %></li>
 			<li><%= link_to "Pricing", nav_pricing_path %></li>
 			<li><%= link_to "Contact", nav_contact_path %></li>
-			<li><%= link_to "TestPage", '/sales/rfm_score' %></li>
 			<% if user_signed_in? %>
 			<li>
 				<%= link_to('Edit registration', edit_user_registration_path) %>
