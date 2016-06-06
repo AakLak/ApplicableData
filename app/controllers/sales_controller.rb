@@ -111,6 +111,10 @@ class SalesController < ApplicationController
   def import
     Sale.import(params[:file], current_user.id)
     redirect_to sales_path, notice: "Sales Data Imported Successfully"
+    p "*" * 50
+    p params[:file]
+    p params[:file].path
+    p "*" * 50
   end
 
   private
