@@ -7,6 +7,11 @@ class Sale < ActiveRecord::Base
 		end
 	end
 
+	def self.import_ftp(file, user_id)
+
+	end
+
+	#method for .csv download page
 	def self.to_csv
 		CSV.generate(headers: true) do |csv|
 
