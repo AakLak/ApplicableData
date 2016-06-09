@@ -7,6 +7,13 @@ class Sale < ActiveRecord::Base
 		end
 	end
 
+	def self.ftp_import(file, user_id)
+		@domain = "ftp.yohogold.com"
+		@ftp_login = "aaklak"
+		@ftp_password = "Jc5sJqTK"
+	end
+
+	# for download CSV page
 	def self.to_csv
 		CSV.generate(headers: true) do |csv|
 
