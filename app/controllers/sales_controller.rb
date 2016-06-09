@@ -113,7 +113,7 @@ class SalesController < ApplicationController
     redirect_to sales_path, notice: "Sales Data Imported Successfully"
     p "*" * 50
     p params[:file]
-    p params[:file].path
+    p params[:file].to_yaml
     p "*" * 50
   end
 
