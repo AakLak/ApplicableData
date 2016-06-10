@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <% if user_signed_in? %>
 <h1>Listing Sales</h1>
 
-<%= ENV["TEST_VARIABLE"] %>
+
 
 <table class="table table-hover">
   <thead>
@@ -32,7 +30,7 @@
 <br>
 
 <h3>Import Sales Data</h3>
-<%= form_tag import_sales_path, multipart: true do %>
+<%= form_tag import_csv_sales_path, multipart: true do %>
 <%= file_field_tag :file %>
 <%= submit_tag "Upload" %>
 <% end %>

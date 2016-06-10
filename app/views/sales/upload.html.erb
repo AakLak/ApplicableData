@@ -2,33 +2,23 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading"><h2>Import Local File</h2></div>
 		<div class="panel-body">
-			<%= form_tag import_sales_path, multipart: true do %>
-
-			<!-- <span class="btn btn-large btn-warning btn-file"> -->
-
+			<%= form_tag import_csv_sales_path, multipart: true do %>
 			<%= file_field_tag :file, :class => "" %>
-
-
 			<br><br>
 			<%= submit_tag "Upload", :class => "btn btn-primary" %>
-
-
 			<% end %>
-
 			<%= link_to 'New Sale', new_sale_path %>
-			<% else %>
 		</div>
 	</div>
 </div>
 
 <div class="col-md-6"><div class="panel panel-primary">
-	
-		<div class="panel-heading">
-			<h2>Import via FTP</h2>
-		</div>
 
-		<div class="panel-body">
-			aa
-		</div>
-	
+	<div class="panel-heading">
+		<h2>Import via FTP</h2>
+	</div>
+	<div class="panel-body">
+		Text Here
+	</div>
+
 </div></div>

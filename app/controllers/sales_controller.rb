@@ -108,7 +108,7 @@ class SalesController < ApplicationController
     end
   end
 
-  def import
+  def import_csv
     Sale.import(params[:file], current_user.id)
     redirect_to sales_path, notice: "Sales Data Imported Successfully"
     p "*" * 50
