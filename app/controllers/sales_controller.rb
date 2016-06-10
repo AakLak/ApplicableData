@@ -117,6 +117,10 @@ class SalesController < ApplicationController
     p "*" * 50
   end
 
+  def import_ftp
+    p 'hi'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sale
