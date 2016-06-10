@@ -7,10 +7,16 @@ class Sale < ActiveRecord::Base
 		end
 	end
 
-	def self.ftp_import(file, user_id)
+	def self.ftp_import
 		@domain = "ftp.yohogold.com"
 		@ftp_login = "aaklak"
 		@ftp_password = "Jc5sJqTK"
+
+		Net::FTP.open(@domain, @ftp_login, @ftp_password) do |ftp|
+				# ftp.chdir("root_level/nested/")
+				files = ftp.list
+				puts files
+				puts "*" * 50
 	end
 
 	# for download CSV page
