@@ -117,6 +117,11 @@ class SalesController < ApplicationController
     p "*" * 50
   end
 
+  def import_ftp
+    Sale.ftp_import
+    redirect_to sales_path, notice: @ftp_login
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sale

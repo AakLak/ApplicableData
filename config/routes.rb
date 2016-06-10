@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :sales do
     collection do
       post :import_csv
+      post :import_ftp
       get 'rfm_score'
       get 'lifecycle_grid'
       get 'upload'

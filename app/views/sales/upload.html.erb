@@ -18,7 +18,19 @@
 		<h2>Import via FTP</h2>
 	</div>
 	<div class="panel-body">
-		Text Here
+		<%= form_tag import_ftp_sales_path, multipart: true do %>
+
+			<%= label_tag :domain %>
+      <%= text_field_tag :domain, params[:domain] %>
+      <br>
+      <%= label_tag :ftp_user %>
+      <%= text_field_tag :ftp_user, params[:ftp_user] %>
+      <br>
+      <%= label_tag :ftp_password %>
+      <%= text_field_tag :ftp_password, params[:ftp_password] %>
+      <br>
+      <%= submit_tag "Import FTP File", :class => "btn btn-primary" %>
+    <% end -%>
 	</div>
 
 </div></div>

@@ -14,8 +14,14 @@ class Sale < ActiveRecord::Base
 
 		Net::FTP.open(@domain, @ftp_login, @ftp_password) do |ftp|
 			files = ftp.list
+			p "*" * 50
+			p "*" * 50
+			p "*" * 50
 			puts "list out files in root directory:"
 			puts files
+			p "*" * 50
+			p "*" * 50
+			p "*" * 50
 			# ftp.chdir("/root_level/nested/")
 		end
 	end
