@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <div class="col-md-6">
 	<div class="panel panel-primary">
 		<div class="panel-heading"><h2>Import Local File</h2></div>
@@ -16,7 +17,7 @@
 			<% end %>
 
 			<%= link_to 'New Sale', new_sale_path %>
-			<% else %>
+
 		</div>
 	</div>
 </div>
@@ -32,3 +33,9 @@
 		</div>
 	
 </div></div>
+
+<% else %>
+
+<p class="alert alert-danger">You must be signed in to view this page</p>
+
+<% end %>
