@@ -7,22 +7,20 @@ class Sale < ActiveRecord::Base
 		end
 	end
 
-	def self.ftp_import()
-		@domain = "ftp.yohogold.com"
-		@ftp_login = "aaklak"
-		@ftp_password = "Jc5sJqTK"
+	def self.ftp_import(domain, user, pass, user_id)
+		# @domain = "ftp.yohogold.com"
+		# @ftp_login = "aaklak"
+		# @ftp_password = "Jc5sJqTK"
 
-		Net::FTP.open(@domain, @ftp_login, @ftp_password) do |ftp|
+		Net::FTP.open(domain, @ftp_login, @ftp_password) do |ftp|
 			files = ftp.list
-			p "*" * 50
-			p "*" * 50
-			p "*" * 50
-			puts "list out files in root directory:"
-			puts files
-			p "*" * 50
-			p "*" * 50
-			p "*" * 50
-			# ftp.chdir("/root_level/nested/")
+			ftp.chdir("/root_level/nested/")
+			ftp.passive = true
+			ftp.getbinaryfile("small_sample_data.csv", './public/uploads/gotcha.csv')
+			CSV.foreach('./public/uploads/gotcha.csv', headers:true) do |row|
+				Sale.create! row.to_hash.merge(user_id: user_id)
+			end
+
 		end
 	end
 
