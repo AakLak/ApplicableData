@@ -118,7 +118,7 @@ class SalesController < ApplicationController
   end
 
   def import_ftp
-    Sale.ftp_import(params[:domain], params[:ftp_user], params[:ftp_password], current_user.id)
+    Sale.ftp_import(params[:domain], params[:directory], params[:ftp_user], params[:ftp_password], current_user.id)
     redirect_to sales_path, notice: @ftp_login
   end
 

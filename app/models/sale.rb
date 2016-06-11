@@ -7,14 +7,15 @@ class Sale < ActiveRecord::Base
 		end
 	end
 
-	def self.ftp_import(domain, user, pass, user_id)
+	def self.ftp_import(domain, directory, user, pass, user_id)
 		# @domain = "ftp.yohogold.com"
 		# @ftp_login = "aaklak"
 		# @ftp_password = "Jc5sJqTK"
 
-		Net::FTP.open(domain, @ftp_login, @ftp_password) do |ftp|
+		Net::FTP.open(domain, user, pass) do |ftp|
 			files = ftp.list
-			ftp.chdir("/root_level/nested/")
+			#ftp.chdir("/root_level/nested/")
+			ftp.chdir(directory)
 			ftp.passive = true
 			ftp.getbinaryfile("small_sample_data.csv", './public/uploads/gotcha.csv')
 			CSV.foreach('./public/uploads/gotcha.csv', headers:true) do |row|
