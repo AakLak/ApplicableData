@@ -27,8 +27,25 @@ class Sale < ActiveRecord::Base
 
 	#method for .csv download page
 	def self.to_csv
-		CSV.generate(headers: true) do |csv|
+		attributes = %w{email last_purchase num_orders total_spent r f m}
+		most_purchases = all.most_purchases
+		newest_purchase = all.orders.last.order_date
+    oldest_purchase = all.orders.first.order_date
+    spread = (newest_purchase - oldest_purchase).to_f
+    max_spent = all.max_spent
 
+		CSV.generate(headers: true) do |csv|
+			csv << attributes
+
+			all.consolidated.each do |customer|
+				csv << [customer.email,
+								customer.order_date,
+								all.group(:email).count.values_at(customer.email).first.to_f,
+								all.where(email: customer.email).sum(:amount).round(2),
+								score(((customer.order_date - oldest_purchase).to_f/spread).round(2)),
+							  score(all.group(:email).count.values_at(customer.email).first.to_f/ most_purchases),
+								score((all.where(email: customer.email).sum(:amount)/max_spent).round(2))]
+			end
 		end
 	end
 

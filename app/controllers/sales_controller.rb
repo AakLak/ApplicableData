@@ -14,12 +14,6 @@ class SalesController < ApplicationController
         @max_spent = @sales.max_spent
       end
 
-
-      respond_to do |format|
-        format.html
-        format.csv {send_data @sales.to_csv}
-      end
-
     end
     # render stream: true
   end  
