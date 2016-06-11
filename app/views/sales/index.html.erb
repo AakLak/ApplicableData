@@ -29,13 +29,6 @@
 
 <br>
 
-<h3>Import Sales Data</h3>
-<%= form_tag import_csv_sales_path, multipart: true do %>
-<%= file_field_tag :file %>
-<%= submit_tag "Upload" %>
-<% end %>
-
-<%= link_to 'New Sale', new_sale_path %>
 <% else %>
 
 <p class="alert alert-danger">You must be signed in to view this page</p>
