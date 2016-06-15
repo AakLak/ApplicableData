@@ -17,7 +17,7 @@ class Sale < ActiveRecord::Base
 			#ftp.chdir("/root_level/nested/")
 			ftp.chdir(directory)
 			ftp.passive = true
-			ftp.getbinaryfile("small_sample_data.csv", './public/uploads/gotcha.csv')
+			ftp.getbinaryfile("large_sample_data.csv", './public/uploads/gotcha.csv')
 			CSV.foreach('./public/uploads/gotcha.csv', headers:true) do |row|
 				Sale.create! row.to_hash.merge(user_id: user_id)
 			end
@@ -47,6 +47,42 @@ class Sale < ActiveRecord::Base
 								score((all.where(email: customer.email).sum(:amount)/max_spent).round(2))]
 			end
 		end
+	end
+
+	def self.unique_emails
+		self.pluck(:email).uniq
+	end
+
+	# def self.email_orders
+	# 	email_orders = self.pluck(:email, :order_date)
+	# 	emails = []
+	# 	email_orders.each do |email_order|
+	# 		emails << email_order[0]
+	# 	end
+	# 	emails = emails.uniq!
+	# 	order_list = []
+	# 	emails.each do |email|
+	# 		order_list << email
+	# 		email_orders.each do |email_order|
+	# 			order_list
+	# 		end
+	# 	end
+
+	# end
+
+	def self.tester
+		sorted = self.order(:email, :order_date)
+		unique_emails = sorted.pluck(:email).uniq
+		days_between_order_arr = []
+		unique_emails.each do |email|
+			if sorted.where(email: email).count > 2
+				first_order = sorted.where(email: email).first.order_date
+				second_order = sorted.where(email: email).second.order_date
+				days_between_order = second_order - first_order
+				days_between_order_arr << days_between_order.to_f
+			end
+		end
+		average_between_first_and_second = days_between_order_arr.sum/days_between_order_arr.size.to_f
 	end
 
 	def self.most_purchases
