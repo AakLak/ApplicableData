@@ -70,19 +70,19 @@ class Sale < ActiveRecord::Base
 
 	# end
 
-	def self.tester
+	def self.days_between_order(older,newer)
 		sorted = self.order(:email, :order_date)
 		unique_emails = sorted.pluck(:email).uniq
 		days_between_order_arr = []
 		unique_emails.each do |email|
-			if sorted.where(email: email).count > 2
-				first_order = sorted.where(email: email).first.order_date
-				second_order = sorted.where(email: email).second.order_date
+			if sorted.where(email: email).count > newer
+				first_order = sorted.where(email: email)[older -1].order_date
+				second_order = sorted.where(email: email)[newer -1].order_date
 				days_between_order = second_order - first_order
 				days_between_order_arr << days_between_order.to_f
 			end
 		end
-		average_between_first_and_second = days_between_order_arr.sum/days_between_order_arr.size.to_f
+		average_between_first_and_second = (days_between_order_arr.sum/days_between_order_arr.size).round(2)
 	end
 
 	def self.most_purchases
