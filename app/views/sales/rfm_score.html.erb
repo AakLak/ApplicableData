@@ -11,6 +11,9 @@
 	Newest Purchase: <%= @newest_purchase %> <br>
 	Purchase Spread: <%= @spread %> Days<br>
 	Max Spent <%= @max_spent %><br>
+	Average Time Between:<br>
+		1st & 2nd Purchase <%= @sales.dyas_between(1, 2) %><br>
+		2nd & 3nd Purchase <%= @sales.dyas_between(2, 3) %><br>
 </h3>
 <div id="scrollme">
 	<table class="table table-hover">
@@ -25,6 +28,9 @@
 				<th>M</th>
 			</tr>
 		</thead>
+
+		<%#= @sales.email_orders %>
+
 		<tbody>
 			<% @sales.consolidated.each do |customer| %>
 			<tr>
@@ -39,11 +45,8 @@
 			<% end %>
 		</tbody>
 	</table>
+	<%= link_to "Download to CSV", "/sales/rfm_score.csv", class: "btn btn-primary" %>
 </div>
-
-
-
-<br>
 
 <% else %>
 

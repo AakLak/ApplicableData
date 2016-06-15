@@ -1,9 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <% if user_signed_in? %>
 <h1>Listing Sales</h1>
-
-<%= ENV["TEST_VARIABLE"] %>
 
 <table class="table table-hover">
   <thead>
@@ -31,13 +27,6 @@
 
 <br>
 
-<h3>Import Sales Data</h3>
-<%= form_tag import_sales_path, multipart: true do %>
-<%= file_field_tag :file %>
-<%= submit_tag "Upload" %>
-<% end %>
-
-<%= link_to 'New Sale', new_sale_path %>
 <% else %>
 
 <p class="alert alert-danger">You must be signed in to view this page</p>

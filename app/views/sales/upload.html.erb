@@ -1,41 +1,51 @@
 <% if user_signed_in? %>
-<div class="col-md-6">
+<div class="col-md-4">
 	<div class="panel panel-primary">
 		<div class="panel-heading"><h2>Import Local File</h2></div>
 		<div class="panel-body">
-			<%= form_tag import_sales_path, multipart: true do %>
-
-			<!-- <span class="btn btn-large btn-warning btn-file"> -->
-
-			<%= file_field_tag :file, :class => "" %>
-
-
-			<br><br>
-			<%= submit_tag "Upload", :class => "btn btn-primary" %>
-
-
+			<%= form_tag import_csv_sales_path, multipart: true do %>
+  			<%= file_field_tag :file, :class => "" %>
+  			<br><br>
+  			<%= submit_tag "Upload", :class => "btn btn-primary" %>
 			<% end %>
-
-			<%= link_to 'New Sale', new_sale_path %>
-
 		</div>
 	</div>
 </div>
 
-<div class="col-md-6"><div class="panel panel-primary">
-	
-		<div class="panel-heading">
-			<h2>Import via FTP</h2>
-		</div>
 
-		<div class="panel-body">
-			<%= link_to "FTP Upload", import_ftp_sales_path %>
-		</div>
-	
+<div class="col-md-4"><div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h2>Import via FTP</h2>
+  </div>
+  <div class="panel-body">
+    <%= form_tag import_ftp_sales_path, multipart: true do %>
+
+      <%= label_tag :domain %>
+      <%= text_field_tag :domain, params[:domain] %>
+      <br>
+      <%= label_tag :directory %>
+      <%= text_field_tag :directory, params[:directory] %>
+      <br>
+      <%= label_tag :ftp_user %>
+      <%= text_field_tag :ftp_user, params[:ftp_user] %>
+      <br>
+      <%= label_tag :ftp_password %>
+      <%= text_field_tag :ftp_password, params[:ftp_password] %>
+      <br>
+      <%= submit_tag "Import FTP File", :class => "btn btn-primary" %>
+    <% end -%>
+  </div>
+
 </div></div>
 
-<% else %>
+<div class="col-md-4"><div class="panel panel-primary">
 
-<p class="alert alert-danger">You must be signed in to view this page</p>
+  <div class="panel-heading">
+    <h2>Manual Input</h2>
+  </div>
+  <div class="panel-body">
+    <%= link_to 'New Sale', new_sale_path, :class => "btn btn-primary"%>
+  </div>
 
-<% end %>
+</div></div>

@@ -14,12 +14,6 @@ class SalesController < ApplicationController
         @max_spent = @sales.max_spent
       end
 
-
-      respond_to do |format|
-        format.html
-        format.csv {send_data @sales.to_csv}
-      end
-
     end
     # render stream: true
   end  
@@ -108,7 +102,7 @@ class SalesController < ApplicationController
     end
   end
 
-  def import
+  def import_csv
     Sale.import(params[:file], current_user.id)
     redirect_to sales_path, notice: "Sales Data Imported Successfully"
     p "*" * 50
@@ -118,7 +112,8 @@ class SalesController < ApplicationController
   end
 
   def import_ftp
-    p 'hi'
+    Sale.ftp_import(params[:domain], params[:directory], params[:ftp_user], params[:ftp_password], current_user.id)
+    redirect_to sales_path, notice: "Sales Data Imported Successfully"
   end
 
   private
