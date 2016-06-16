@@ -1,0 +1,90 @@
+<% if user_signed_in? %>
+
+<div class="col-md-4">
+  <%= @sales.first.days_between %>
+</div>
+
+<div class="col-md-4">
+  <%= @sales.order_count_hash %>
+</div>
+
+<div class="col-md-4">
+  <% @sales.pluck(:email).uniq.each do |email| %>
+    <%= @sales.where(email: email).first.order_date %>
+    <br>
+  <% end %>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Purchases</th>
+      <th>181+</th>
+      <th>121-180</th>
+      <th>91 - 120</th>
+      <th>61 - 90</th>
+      <th>31 - 60</th>
+      <th><= 30</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+
+  <%#= @sales.email_orders %>
+
+  <tbody>
+
+    <tr>
+      <td>>=5</td>
+      <td>@sales.where()</td>
+      <td>121-180</td>
+      <td>91-120</td>
+      <td>61-90</td>
+      <td>31-60</td>
+      <td><=30</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>4 181+ days</td>
+      <td>4 121-180</td>
+      <td>4 91-120</td>
+      <td>4 61-90</td>
+      <td>4 31-60</td>
+      <td>4 <=30</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3 181+ days</td>
+      <td>3 121-180</td>
+      <td>3 91-120</td>
+      <td>3 61-90</td>
+      <td>3 31-60</td>
+      <td>3 <=30</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2 181+ days</td>
+      <td>2 121-180</td>
+      <td>2 91-120</td>
+      <td>2 61-90</td>
+      <td>2 31-60</td>
+      <td>2 <=30</td>
+
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1 181+ days</td>
+      <td>1 121-180</td>
+      <td>1 91-120</td>
+      <td>1 61-90</td>
+      <td>1 31-60</td>
+      <td>1 <=30</td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+
+<% else %>
+<p class="alert alert-danger">You must be signed in to view this page</p>
+<% end %>

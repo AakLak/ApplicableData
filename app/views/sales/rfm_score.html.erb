@@ -32,7 +32,7 @@
 		<%#= @sales.email_orders %>
 
 		<tbody>
-			<% @sales.consolidated.each do |customer| %>
+			<% @sales.consolidated.find_each do |customer| %>
 			<tr>
 				<td><%= customer.email %></td>
 				<td><%= customer.order_date %></td>

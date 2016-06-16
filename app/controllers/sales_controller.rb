@@ -40,7 +40,7 @@ class SalesController < ApplicationController
   end
 
   def lifecycle_grid
-    
+    @sales = current_user.sales if current_user
   end
 
   def upload

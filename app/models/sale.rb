@@ -110,4 +110,16 @@ class Sale < ActiveRecord::Base
 		email_totals = self.group(:email).sum(:amount)
 		email_totals.values.max
 	end
+
+	def self.order_count_hash
+		# result_hash = Hash.new(0)
+		email_orders = self.group(:email).count
+		# email_orders.each_value {|v| result_hash[v] += 1}
+		# result_hash
+	end
+
+	def days_between
+		arr= []
+		arr=[email, order_date]
+	end
 end
