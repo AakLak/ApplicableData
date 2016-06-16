@@ -82,7 +82,12 @@ class Sale < ActiveRecord::Base
 				days_between_order_arr << days_between_order.to_f
 			end
 		end
-		average_between_first_and_second = (days_between_order_arr.sum/days_between_order_arr.size).round(2)
+
+		total_days_between = days_between_order_arr.sum.round(2)
+		total_days = days_between_order_arr.size.round(2)
+		average_days_between = (total_days_between/total_days) if (total_days > 0)
+		return average_days_between || 0
+		# return total_days
 	end
 
 	def self.most_purchases
