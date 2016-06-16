@@ -83,10 +83,10 @@ class Sale < ActiveRecord::Base
 			end
 		end
 
-		total_days_between = days_between_order_arr.sum.round(2)
-		total_days = days_between_order_arr.size.round(2)
+		total_days_between = days_between_order_arr.sum
+		total_days = days_between_order_arr.size
 		average_days_between = (total_days_between/total_days) if (total_days > 0)
-		return average_days_between || 0
+		return average_days_between.round(2) || 0
 		# return total_days
 	end
 
