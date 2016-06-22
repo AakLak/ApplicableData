@@ -105,10 +105,6 @@ class SalesController < ApplicationController
   def import_csv
     Sale.import(params[:file], current_user.id)
     redirect_to sales_path, notice: "Sales Data Imported Successfully"
-    p "*" * 50
-    p params[:file]
-    p params[:file].to_yaml
-    p "*" * 50
   end
 
   def import_ftp

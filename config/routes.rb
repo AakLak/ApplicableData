@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'nav/pricing'
 
   get 'nav/contact'
-
+  
   resources :sales do
     collection do
       post :import_csv
