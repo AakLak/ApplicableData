@@ -13,7 +13,6 @@ class SalesController < ApplicationController
         @spread = (@newest_purchase - @oldest_purchase).to_f
         @max_spent = @sales.max_spent
       end
-
     end
     # render stream: true
   end  
