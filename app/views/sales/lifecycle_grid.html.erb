@@ -1,18 +1,19 @@
 <% if user_signed_in? %>
 
 <div class="col-md-4">
-  <%= @sales.first.days_between %>
+  <h1>Order Count</h1>
+  <%= LC_order_count_emails(@sales.order_count_hash, 3) %>
 </div>
 
 <div class="col-md-4">
-  <%= @sales.order_count_hash %>
+  <h1>Order Count Hash</h1>
+  <%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,1, 50)%>
+  <%#= @sales.order_count_hash %>
 </div>
 
 <div class="col-md-4">
-  <% @sales.pluck(:email).uniq.each do |email| %>
-    <%= @sales.where(email: email).first.order_date %>
-    <br>
-  <% end %>
+<h1>Days Ago</h1>
+  <%= @days_ago %>
 </div>
 
 <table class="table table-hover">
@@ -35,49 +36,49 @@
 
     <tr>
       <td>>=5</td>
-      <td>@sales.where()</td>
-      <td>121-180</td>
-      <td>91-120</td>
-      <td>61-90</td>
-      <td>31-60</td>
-      <td><=30</td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,181, 999999).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,121, 180).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,91, 120).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,61, 90).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,31, 60).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,0, 30).count %></td>
     </tr>
     <tr>
       <td>4</td>
-      <td>4 181+ days</td>
-      <td>4 121-180</td>
-      <td>4 91-120</td>
-      <td>4 61-90</td>
-      <td>4 31-60</td>
-      <td>4 <=30</td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,181, 999999).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,121, 180).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,91, 120).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,61, 90).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,31, 60).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,0, 30).count %></td>
     </tr>
     <tr>
       <td>3</td>
-      <td>3 181+ days</td>
-      <td>3 121-180</td>
-      <td>3 91-120</td>
-      <td>3 61-90</td>
-      <td>3 31-60</td>
-      <td>3 <=30</td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,181, 999999).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,121, 180).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,91, 120).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,61, 90).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,31, 60).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,0, 30).count %></td>
     </tr>
     <tr>
       <td>2</td>
-      <td>2 181+ days</td>
-      <td>2 121-180</td>
-      <td>2 91-120</td>
-      <td>2 61-90</td>
-      <td>2 31-60</td>
-      <td>2 <=30</td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,181, 999999).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,121, 180).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,91, 120).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,61, 90).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,31, 60).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,0, 30).count %></td>
 
     </tr>
     <tr>
       <td>1</td>
-      <td>1 181+ days</td>
-      <td>1 121-180</td>
-      <td>1 91-120</td>
-      <td>1 61-90</td>
-      <td>1 31-60</td>
-      <td>1 <=30</td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,181, 999999).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,121, 180).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,91, 120).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,61, 90).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,31, 60).count %></td>
+      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,0, 30).count %></td>
     </tr>
 
 
