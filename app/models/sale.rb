@@ -39,28 +39,28 @@ class Sale < ActiveRecord::Base
 		attributes = %w{email last_purchase num_orders total_spent r f m}
 		most_purchases = all.most_purchases
 		newest_purchase = all.orders.last.order_date
-    oldest_purchase = all.orders.first.order_date
-    spread = (newest_purchase - oldest_purchase).to_f
-    max_spent = all.max_spent
+		oldest_purchase = all.orders.first.order_date
+		spread = (newest_purchase - oldest_purchase).to_f
+		max_spent = all.max_spent
 
 		CSV.generate(headers: true) do |csv|
 			csv << attributes
 
 			all.consolidated.each do |customer|
 				csv << [customer.email,
-								customer.order_date,
-								all.group(:email).count.values_at(customer.email).first.to_f,
-								all.where(email: customer.email).sum(:amount).round(2),
-								score(((customer.order_date - oldest_purchase).to_f/spread).round(2)),
-							  score(all.group(:email).count.values_at(customer.email).first.to_f/ most_purchases),
-								score((all.where(email: customer.email).sum(:amount)/max_spent).round(2))]
+					customer.order_date,
+					all.group(:email).count.values_at(customer.email).first.to_f,
+					all.where(email: customer.email).sum(:amount).round(2),
+					score(((customer.order_date - oldest_purchase).to_f/spread).round(2)),
+					score(all.group(:email).count.values_at(customer.email).first.to_f/ most_purchases),
+					score((all.where(email: customer.email).sum(:amount)/max_spent).round(2))]
+				end
 			end
 		end
-	end
 
-	def self.unique_emails
-		self.pluck(:email).uniq
-	end
+		def self.unique_emails
+			self.pluck(:email).uniq
+		end
 
 	# def self.email_orders
 	# 	email_orders = self.pluck(:email, :order_date)
@@ -132,8 +132,50 @@ class Sale < ActiveRecord::Base
 		# result_hash
 	end
 
-	def days_between
-		arr= []
-		arr=[email, order_date]
+	def self.latest_order
+		self.group(:email).having('order_date = MAX(order_date)').pluck(:email, :order_date)
 	end
+
+
+end
+
+def email_date_days_ago(array)
+	result_hash = Hash.new
+	array.each do |email_date|
+		days_since = (email_date[1] - Date.today).to_f.abs
+		email = email_date[0]
+		result_hash[email] = days_since
+	end
+	result_hash
+end
+
+def LC_order_count_emails(email_orders_hash, num_orders)
+	if num_orders == 5
+		email_orders_hash.select{|k,v| v >= num_orders}.keys
+	else
+		email_orders_hash.select{|k,v| v == num_orders}.keys
+	end
+end
+
+def LC_days_ago(email_array, email_days_hash, min_day, max_day)
+	reduced_hash = Hash.new
+	email_array.each do |email|
+		if email_days_hash[email].between?(min_day, max_day)
+			reduced_hash[email] = email_days_hash[email]
+		end
+	end
+	reduced_hash
+end
+
+def slot_us(purchase_hash, days_hash, purchases, days_ago)
+	emails_array = []
+	enough_purchase_hash = purchase_hash.select{|k,v| v = purchases}
+	enough_purchase_hash.each_key do |email|
+		emails_array << email
+	end
+	result_hash = Hash.new
+	emails_array.each do |email|
+		result_hash[email] << days_hash.select{|k,v| k == email && v >= days_ago }
+	end
+	result_hash
 end

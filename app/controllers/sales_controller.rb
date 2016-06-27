@@ -41,6 +41,7 @@ class SalesController < ApplicationController
 
   def lifecycle_grid
     @sales = current_user.sales if current_user
+    @days_ago = email_date_days_ago(@sales.latest_order)
   end
 
   def upload
