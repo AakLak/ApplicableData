@@ -23,6 +23,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #I ADDED THESE #
 gem 'bootstrap-sass'
+gem 'bootstrap-table-rails' 
+
 gem 'devise'
 gem 'american_date'
 #I ADDED THESE #
@@ -40,8 +42,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  gem "better_errors"
-  gem "binding_of_caller"
+  #gem "better_errors"
+  #gem "binding_of_caller"
 
   gem 'bullet'
   # Use sqlite3 as the database for Active Record
