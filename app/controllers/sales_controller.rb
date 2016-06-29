@@ -121,21 +121,6 @@ class SalesController < ApplicationController
 
   end
 
-  def best_customers
-    @sales = current_user.sales if current_user
-    @days_ago = email_date_days_ago(@sales.latest_order)
-
-    @five_order_emails = LC_order_count_emails(@sales.order_count_hash, 5)
-    @four_order_emails = LC_order_count_emails(@sales.order_count_hash, 4)
-    @three_order_emails = LC_order_count_emails(@sales.order_count_hash, 3)
-    @two_order_emails = LC_order_count_emails(@sales.order_count_hash, 2)
-    @one_order_emails = LC_order_count_emails(@sales.order_count_hash, 1)
-
-    @best_customers = LC_days_ago(@five_order_emails, @days_ago,181, 999999).merge(LC_days_ago(@five_order_emails, @days_ago,121, 180)).merge(LC_days_ago(@five_order_emails, @days_ago,91, 120)).merge(LC_days_ago(@four_order_emails, @days_ago,181, 999999)).merge(LC_days_ago(@four_order_emails, @days_ago,121, 180)).merge(LC_days_ago(@four_order_emails, @days_ago,91, 120)).keys
-
-
-  end
-
   def upload
     
   end
