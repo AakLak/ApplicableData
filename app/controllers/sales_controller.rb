@@ -108,6 +108,17 @@ class SalesController < ApplicationController
     @one_purchase_31_day = LC_days_ago(@one_order_emails, @days_ago,31, 60)
 
     @one_purchase_0_day = LC_days_ago(@one_order_emails, @days_ago,0, 30)
+
+    @best = @five_purchase_61_day.merge(@five_purchase_31_day.merge(@five_purchase_0_day.merge(@four_purchase_61_day.merge(@four_purchase_31_day.merge(@four_purchase_0_day))))).keys
+
+    @disengaged_best = @five_purchase_181_day.merge(@five_purchase_121_day.merge(@five_purchase_91_day.merge(@four_purchase_181_day.merge(@four_purchase_121_day.merge(@four_purchase_91_day))))).keys
+
+    @disengaged_light = @three_purchase_181_day.merge(@three_purchase_121_day.merge(@three_purchase_91_day.merge(@two_purchase_181_day.merge(@two_purchase_121_day.merge(@two_purchase_91_day.merge(@one_purchase_181_day.merge(@one_purchase_121_day.merge(@one_purchase_91_day)))))))).keys
+
+    @new_high_potential = @three_purchase_61_day.merge(@three_purchase_31_day.merge(@three_purchase_0_day.merge(@two_purchase_61_day.merge(@two_purchase_31_day.merge(@two_purchase_0_day.merge(@one_purchase_61_day.merge(@one_purchase_31_day))))))).keys
+
+    @new = @one_purchase_0_day.keys
+
   end
 
   def best_customers
@@ -121,6 +132,7 @@ class SalesController < ApplicationController
     @one_order_emails = LC_order_count_emails(@sales.order_count_hash, 1)
 
     @best_customers = LC_days_ago(@five_order_emails, @days_ago,181, 999999).merge(LC_days_ago(@five_order_emails, @days_ago,121, 180)).merge(LC_days_ago(@five_order_emails, @days_ago,91, 120)).merge(LC_days_ago(@four_order_emails, @days_ago,181, 999999)).merge(LC_days_ago(@four_order_emails, @days_ago,121, 180)).merge(LC_days_ago(@four_order_emails, @days_ago,91, 120)).keys
+
 
   end
 
