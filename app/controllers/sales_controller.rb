@@ -42,6 +42,86 @@ class SalesController < ApplicationController
   def lifecycle_grid
     @sales = current_user.sales if current_user
     @days_ago = email_date_days_ago(@sales.latest_order)
+
+    @five_order_emails = LC_order_count_emails(@sales.order_count_hash, 5)
+    @four_order_emails = LC_order_count_emails(@sales.order_count_hash, 4)
+    @three_order_emails = LC_order_count_emails(@sales.order_count_hash, 3)
+    @two_order_emails = LC_order_count_emails(@sales.order_count_hash, 2)
+    @one_order_emails = LC_order_count_emails(@sales.order_count_hash, 1)
+
+    @five_purchase_181_day = LC_days_ago(@five_order_emails, @days_ago,181, 999999)
+
+    @five_purchase_121_day = LC_days_ago(@five_order_emails, @days_ago,121, 180)
+
+    @five_purchase_91_day = LC_days_ago(@five_order_emails, @days_ago,91, 120)
+
+    @five_purchase_61_day = LC_days_ago(@five_order_emails, @days_ago,61, 90)
+
+    @five_purchase_31_day = LC_days_ago(@five_order_emails, @days_ago,31, 60)
+
+    @five_purchase_0_day = LC_days_ago(@five_order_emails, @days_ago,0, 30)
+
+    @four_purchase_181_day = LC_days_ago(@four_order_emails, @days_ago,181, 999999)
+
+    @four_purchase_121_day = LC_days_ago(@four_order_emails, @days_ago,121, 180)
+
+    @four_purchase_91_day = LC_days_ago(@four_order_emails, @days_ago,91, 120)
+
+    @four_purchase_61_day = LC_days_ago(@four_order_emails, @days_ago,61, 90)
+
+    @four_purchase_31_day = LC_days_ago(@four_order_emails, @days_ago,31, 60)
+
+    @four_purchase_0_day = LC_days_ago(@four_order_emails, @days_ago,0, 30)
+
+    @three_purchase_181_day = LC_days_ago(@three_order_emails, @days_ago,181, 999999)
+
+    @three_purchase_121_day = LC_days_ago(@three_order_emails, @days_ago,121, 180)
+
+    @three_purchase_91_day = LC_days_ago(@three_order_emails, @days_ago,91, 120)
+
+    @three_purchase_61_day = LC_days_ago(@three_order_emails, @days_ago,61, 90)
+
+    @three_purchase_31_day = LC_days_ago(@three_order_emails, @days_ago,31, 60)
+
+    @three_purchase_0_day = LC_days_ago(@three_order_emails, @days_ago,0, 30)
+
+    @two_purchase_181_day = LC_days_ago(@two_order_emails, @days_ago,181, 999999)
+
+    @two_purchase_121_day = LC_days_ago(@two_order_emails, @days_ago,121, 180)
+
+    @two_purchase_91_day = LC_days_ago(@two_order_emails, @days_ago,91, 120)
+
+    @two_purchase_61_day = LC_days_ago(@two_order_emails, @days_ago,61, 90)
+
+    @two_purchase_31_day = LC_days_ago(@two_order_emails, @days_ago,31, 60)
+
+    @two_purchase_0_day = LC_days_ago(@two_order_emails, @days_ago,0, 30)
+
+    @one_purchase_181_day = LC_days_ago(@one_order_emails, @days_ago,181, 999999)
+
+    @one_purchase_121_day = LC_days_ago(@one_order_emails, @days_ago,121, 180)
+
+    @one_purchase_91_day = LC_days_ago(@one_order_emails, @days_ago,91, 120)
+
+    @one_purchase_61_day = LC_days_ago(@one_order_emails, @days_ago,61, 90)
+
+    @one_purchase_31_day = LC_days_ago(@one_order_emails, @days_ago,31, 60)
+
+    @one_purchase_0_day = LC_days_ago(@one_order_emails, @days_ago,0, 30)
+  end
+
+  def best_customers
+    @sales = current_user.sales if current_user
+    @days_ago = email_date_days_ago(@sales.latest_order)
+
+    @five_order_emails = LC_order_count_emails(@sales.order_count_hash, 5)
+    @four_order_emails = LC_order_count_emails(@sales.order_count_hash, 4)
+    @three_order_emails = LC_order_count_emails(@sales.order_count_hash, 3)
+    @two_order_emails = LC_order_count_emails(@sales.order_count_hash, 2)
+    @one_order_emails = LC_order_count_emails(@sales.order_count_hash, 1)
+
+    @best_customers = LC_days_ago(@five_order_emails, @days_ago,181, 999999).merge(LC_days_ago(@five_order_emails, @days_ago,121, 180)).merge(LC_days_ago(@five_order_emails, @days_ago,91, 120)).merge(LC_days_ago(@four_order_emails, @days_ago,181, 999999)).merge(LC_days_ago(@four_order_emails, @days_ago,121, 180)).merge(LC_days_ago(@four_order_emails, @days_ago,91, 120)).keys
+
   end
 
   def upload

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'rfm_score'
       get 'lifecycle_grid'
       get 'upload'
+      get 'best_customers'
     end
 
   end

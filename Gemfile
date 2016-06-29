@@ -45,7 +45,6 @@ group :development, :test do
   #gem "better_errors"
   #gem "binding_of_caller"
 
-  gem 'bullet'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   # server keeper
@@ -59,6 +58,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bullet'
 end
 
 group :production do

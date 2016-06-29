@@ -1,5 +1,7 @@
 <% if user_signed_in? %>
 
+<%= link_to 'Best Customers', '/sales/best_customers' %>
+
 <div class="container">
   <table class="table table-bordered">
     <thead>
@@ -22,66 +24,72 @@
       </tr>
       <tr>
         <th>>=5</th>
-        <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,181, 999999).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,121, 180).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,91, 120).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,61, 90).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,31, 60).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 5), @days_ago,0, 30).count %></td>
-        <td>total</td>
+        <td><%= @five_purchase_181_day.count %></td>
+      <td><%= @five_purchase_121_day.count %></td>
+      <td><%= @five_purchase_91_day.count %></td>
+      <td><%= @five_purchase_61_day.count %></td>
+      <td><%= @five_purchase_31_day.count %></td>
+      <td><%= @five_purchase_0_day.count %></td>
+        <td><%= [@five_purchase_181_day.count, @five_purchase_121_day.count, @five_purchase_91_day.count, @five_purchase_61_day.count, @five_purchase_31_day.count, @five_purchase_0_day.count].sum %></td>
       </tr>
       <tr>
         <th>4</th>
-        <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,181, 999999).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,121, 180).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,91, 120).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,61, 90).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,31, 60).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 4), @days_ago,0, 30).count %></td>
-        <td>total</td>
+        <td><%= @four_purchase_181_day.count %></td>
+      <td><%= @four_purchase_121_day.count %></td>
+      <td><%= @four_purchase_91_day.count %></td>
+      <td><%= @four_purchase_61_day.count %></td>
+      <td><%= @four_purchase_31_day.count %></td>
+      <td><%= @four_purchase_0_day.count %></td>
+        <td><%= [@four_purchase_181_day.count, @four_purchase_121_day.count, @four_purchase_91_day.count, @four_purchase_61_day.count, @four_purchase_31_day.count, @four_purchase_0_day.count].sum %></td>
       </tr>
       <tr>
         <th>3</th>
-        <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,181, 999999).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,121, 180).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,91, 120).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,61, 90).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,31, 60).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 3), @days_ago,0, 30).count %></td>
-        <td>total</td>
+        <td><%= @three_purchase_181_day.count %></td>
+      <td><%= @three_purchase_121_day.count %></td>
+      <td><%= @three_purchase_91_day.count %></td>
+      <td><%= @three_purchase_61_day.count %></td>
+      <td><%= @three_purchase_31_day.count %></td>
+      <td><%= @three_purchase_0_day.count %></td>
+        <td><%= [@three_purchase_181_day.count, @three_purchase_121_day.count, @three_purchase_91_day.count, @three_purchase_61_day.count, @three_purchase_31_day.count, @three_purchase_0_day.count].sum %></td>
       </tr>
       <tr>
         <th>2</th>
-        <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,181, 999999).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,121, 180).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,91, 120).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,61, 90).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,31, 60).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 2), @days_ago,0, 30).count %></td>
-        <td>total</td>
+        <td><%= @two_purchase_181_day.count %></td>
+      <td><%= @two_purchase_121_day.count %></td>
+      <td><%= @two_purchase_91_day.count %></td>
+      <td><%= @two_purchase_61_day.count %></td>
+      <td><%= @two_purchase_31_day.count %></td>
+      <td><%= @two_purchase_0_day.count %></td>
+        <td><%= [@two_purchase_181_day.count, @two_purchase_121_day.count, @two_purchase_91_day.count, @two_purchase_61_day.count, @two_purchase_31_day.count, @two_purchase_0_day.count].sum %></td>
       </tr>
       <tr>
         <th>1</th>
-        <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,181, 999999).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,121, 180).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,91, 120).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,61, 90).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,31, 60).count %></td>
-      <td><%= LC_days_ago(LC_order_count_emails(@sales.order_count_hash, 1), @days_ago,0, 30).count %></td>
-        <td>total</td>
+        <td><%= @one_purchase_181_day.count %></td>
+      <td><%= @one_purchase_121_day.count %></td>
+      <td><%= @one_purchase_91_day.count %></td>
+      <td><%= @one_purchase_61_day.count %></td>
+      <td><%= @one_purchase_31_day.count %></td>
+      <td><%= @one_purchase_0_day.count %></td>
+        <td><%= [@one_purchase_181_day.count, @one_purchase_121_day.count, @one_purchase_91_day.count, @one_purchase_61_day.count, @one_purchase_31_day.count, @one_purchase_0_day.count].sum %></td>
       </tr>
       <tr>
         <th>Total</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= [@five_purchase_181_day.count, @four_purchase_181_day.count, @three_purchase_181_day.count, @two_purchase_181_day.count, @one_purchase_181_day.count].sum %></td>
+        <td><%= [@five_purchase_121_day.count, @four_purchase_121_day.count, @three_purchase_121_day.count, @two_purchase_121_day.count, @one_purchase_121_day.count].sum %></td>
+        <td><%= [@five_purchase_91_day.count, @four_purchase_91_day.count, @three_purchase_91_day.count, @two_purchase_91_day.count, @one_purchase_91_day.count].sum %></td>
+        <td><%= [@five_purchase_61_day.count, @four_purchase_61_day.count, @three_purchase_61_day.count, @two_purchase_61_day.count, @one_purchase_61_day.count].sum %></td>
+        <td><%= [@five_purchase_31_day.count, @four_purchase_31_day.count, @three_purchase_31_day.count, @two_purchase_31_day.count, @one_purchase_31_day.count].sum %></td>
+        <td><%= [@five_purchase_0_day.count, @four_purchase_0_day.count, @three_purchase_0_day.count, @two_purchase_0_day.count, @one_purchase_0_day.count].sum %></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<button data-toggle="collapse" data-target="#demo">Collapsible</button>
+
+<div id="demo" class="collapse">
+Lorem ipsum dolor text....
 </div>
 
 <div class="col-md-4">
