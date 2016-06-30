@@ -3,10 +3,6 @@ class Sale < ActiveRecord::Base
 
 	def self.import(file, user_id)
 		CSV.foreach(file.path, headers:true) do |row|
-			# p "*" * 50
-			# p row["order_date"]
-			# row["order_date"] = Date.parse(row["order_date"].to_s)
-			p row
 			if row["order_date"] != "order_date"
 				row["order_date"] = Date.parse(row["order_date"]).to_s
 				p row["order_date"]

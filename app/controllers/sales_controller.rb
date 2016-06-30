@@ -122,7 +122,7 @@ class SalesController < ApplicationController
   end
 
   def upload
-    
+    @user_id = current_user.id
   end
   
   # GET /sales/1
@@ -185,8 +185,27 @@ class SalesController < ApplicationController
     redirect_to sales_path, notice: "Sales Data Imported Successfully"
   end
 
+  def import_csv_test
+    user_id = params[:user_id]
+    import = ImportSaleCSV.new(file: params[:file]) do
+        after_build do |sale|
+          sale.user_id = user_id
+          #refactor
+          skip! if sale.email == nil
+          skip! if sale.order_date == nil
+          skip! if sale.amount == nil
+        end
+      end
+    import.run!
+    # p "*" * 50
+    # p import.report.create_skipped_rows[0].row_array
+    # p "*" * 50
+    redirect_to sales_path, notice: import.report.message
+  end
+
   def import_ftp
     Sale.ftp_import(params[:domain], params[:directory], params[:ftp_user], params[:ftp_password], current_user.id)
+
     redirect_to sales_path, notice: "Sales Data Imported Successfully"
   end
 

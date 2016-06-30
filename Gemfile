@@ -24,9 +24,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #I ADDED THESE #
 gem 'bootstrap-sass'
 gem 'bootstrap-table-rails' 
-
 gem 'devise'
 gem 'american_date'
+gem 'csv-importer'
+
 #I ADDED THESE #
 
 # Use ActiveModel has_secure_password
