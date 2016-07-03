@@ -121,7 +121,7 @@ class SalesController < ApplicationController
   end
 
   def upload
-    @user_id = current_user.id
+    @user_id = current_user.id if current_user
   end
   
   # GET /sales/1
