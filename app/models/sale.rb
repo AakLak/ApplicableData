@@ -100,11 +100,11 @@ class Sale < ActiveRecord::Base
 	end
 
 	def self.orders
-		self.group(:email).order("order_date ASC")
+		self.select('sales.*').group(:email, :id).order("order_date ASC")
 	end
 
 	def self.consolidated
-		self.group(:email).order("order_date DESC")
+		self.select('sales.*').group(:email, :id).order("order_date DESC")
 	end
 
 	def self.num_orders
@@ -129,7 +129,7 @@ class Sale < ActiveRecord::Base
 	end
 
 	def self.latest_order
-		self.group(:email).having('order_date = MAX(order_date)').pluck(:email, :order_date)
+		self.group(:email, :id).having('order_date = MAX(order_date)').pluck(:email, :order_date)
 	end
 
 
