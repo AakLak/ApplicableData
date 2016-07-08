@@ -129,7 +129,7 @@ class Sale < ActiveRecord::Base
 	end
 
 	def self.latest_order
-		self.group(:email).having('order_date = MAX(order_date)').pluck(:email, :order_date)
+		self.group(:email, :id).having('order_date = MAX(order_date)').pluck(:email, :order_date)
 	end
 
 
