@@ -27,6 +27,7 @@ gem 'bootstrap-table-rails'
 gem 'devise'
 gem 'american_date'
 gem 'csv-importer'
+gem 'puma'
 
 #I ADDED THESE #
 
