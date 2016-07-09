@@ -30,6 +30,16 @@ class Sale < ActiveRecord::Base
 		end
 	end
 
+	def self.lifecycle_csv(hash)
+		attributes = %w{email, rank}
+		CSV.generate(headers: true) do |csv|
+			csv << attributes
+			hash.each do |k, v|
+				csv << [k, v]
+			end
+		end
+	end
+
 	#method for .csv download page
 	def self.to_csv
 		attributes = %w{email last_purchase num_orders total_spent r f m}

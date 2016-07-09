@@ -39,6 +39,7 @@ class SalesController < ApplicationController
   end
 
   def lifecycle_grid
+
     @sales = current_user.sales if current_user
     @days_ago = email_date_days_ago(@sales.latest_order)
 
@@ -108,15 +109,46 @@ class SalesController < ApplicationController
 
     @one_purchase_0_day = LC_days_ago(@one_order_emails, @days_ago,0, 30)
 
-    @best = @five_purchase_61_day.merge(@five_purchase_31_day.merge(@five_purchase_0_day.merge(@four_purchase_61_day.merge(@four_purchase_31_day.merge(@four_purchase_0_day))))).keys
+    @best_emails = @five_purchase_61_day.merge(@five_purchase_31_day.merge(@five_purchase_0_day.merge(@four_purchase_61_day.merge(@four_purchase_31_day.merge(@four_purchase_0_day))))).keys
 
-    @disengaged_best = @five_purchase_181_day.merge(@five_purchase_121_day.merge(@five_purchase_91_day.merge(@four_purchase_181_day.merge(@four_purchase_121_day.merge(@four_purchase_91_day))))).keys
+    @best_hash = Hash.new
+    @best_emails.each do |email|
+      @best_hash[email] = 'best'
+    end
 
-    @disengaged_light = @three_purchase_181_day.merge(@three_purchase_121_day.merge(@three_purchase_91_day.merge(@two_purchase_181_day.merge(@two_purchase_121_day.merge(@two_purchase_91_day.merge(@one_purchase_181_day.merge(@one_purchase_121_day.merge(@one_purchase_91_day)))))))).keys
+    @disengaged_best_emails = @five_purchase_181_day.merge(@five_purchase_121_day.merge(@five_purchase_91_day.merge(@four_purchase_181_day.merge(@four_purchase_121_day.merge(@four_purchase_91_day))))).keys
 
-    @new_high_potential = @three_purchase_61_day.merge(@three_purchase_31_day.merge(@three_purchase_0_day.merge(@two_purchase_61_day.merge(@two_purchase_31_day.merge(@two_purchase_0_day.merge(@one_purchase_61_day.merge(@one_purchase_31_day))))))).keys
+    @disengaged_best_hash = Hash.new
+    @disengaged_best_emails.each do |email|
+      @disengaged_best_hash[email] = 'disengaged_best'
+    end
 
-    @new = @one_purchase_0_day.keys
+    @disengaged_light_emails = @three_purchase_181_day.merge(@three_purchase_121_day.merge(@three_purchase_91_day.merge(@two_purchase_181_day.merge(@two_purchase_121_day.merge(@two_purchase_91_day.merge(@one_purchase_181_day.merge(@one_purchase_121_day.merge(@one_purchase_91_day)))))))).keys
+
+    @disengaged_light_hash = Hash.new
+    @disengaged_light_emails.each do |email|
+      @disengaged_light_hash[email] = 'disengaged_light'
+    end
+
+    @new_high_potential_emails = @three_purchase_61_day.merge(@three_purchase_31_day.merge(@three_purchase_0_day.merge(@two_purchase_61_day.merge(@two_purchase_31_day.merge(@two_purchase_0_day.merge(@one_purchase_61_day.merge(@one_purchase_31_day))))))).keys
+
+    @new_high_potential_hash = Hash.new
+    @new_high_potential_emails.each do |email|
+      @new_high_potential_hash[email] = 'new_high_potential'
+    end
+
+    @new_emails = @one_purchase_0_day.keys
+
+    @new_hash = Hash.new
+    @new_emails.each do |email|
+      @new_hash[email] = 'new'
+    end
+
+    email_rank_hash = @best_hash.merge(@disengaged_best_hash).merge(@disengaged_light_hash).merge(@new_high_potential_hash).merge(@new_hash)
+    respond_to do |format|
+      format.html
+      format.csv{send_data hash_to_csv(email_rank_hash)}
+    end
 
   end
 
