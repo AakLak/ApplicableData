@@ -1,6 +1,9 @@
 <% if user_signed_in? %>
 
+
+
 <div class="container">
+  <%= link_to "Download to CSV", "/sales/lifecycle_grid.csv", class: "btn btn-primary" %>
   <table class="table table-bordered">
     <thead>
       <tr>
