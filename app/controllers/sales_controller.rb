@@ -18,7 +18,7 @@ class SalesController < ApplicationController
   end  
 
   def rfm_score
-  if current_user
+    if current_user
       @sales = current_user.sales
       if @sales.length > 1 
         @most_purchases = @sales.most_purchases
@@ -39,117 +39,117 @@ class SalesController < ApplicationController
   end
 
   def lifecycle_grid
+    if current_user
+      @sales = current_user.sales
+      @days_ago = email_date_days_ago(@sales.latest_order)
 
-    @sales = current_user.sales if current_user
-    @days_ago = email_date_days_ago(@sales.latest_order)
+      @five_order_emails = LC_order_count_emails(@sales.order_count_hash, 5)
+      @four_order_emails = LC_order_count_emails(@sales.order_count_hash, 4)
+      @three_order_emails = LC_order_count_emails(@sales.order_count_hash, 3)
+      @two_order_emails = LC_order_count_emails(@sales.order_count_hash, 2)
+      @one_order_emails = LC_order_count_emails(@sales.order_count_hash, 1)
 
-    @five_order_emails = LC_order_count_emails(@sales.order_count_hash, 5)
-    @four_order_emails = LC_order_count_emails(@sales.order_count_hash, 4)
-    @three_order_emails = LC_order_count_emails(@sales.order_count_hash, 3)
-    @two_order_emails = LC_order_count_emails(@sales.order_count_hash, 2)
-    @one_order_emails = LC_order_count_emails(@sales.order_count_hash, 1)
+      @five_purchase_181_day = LC_days_ago(@five_order_emails, @days_ago,181, 999999)
 
-    @five_purchase_181_day = LC_days_ago(@five_order_emails, @days_ago,181, 999999)
+      @five_purchase_121_day = LC_days_ago(@five_order_emails, @days_ago,121, 180)
 
-    @five_purchase_121_day = LC_days_ago(@five_order_emails, @days_ago,121, 180)
+      @five_purchase_91_day = LC_days_ago(@five_order_emails, @days_ago,91, 120)
 
-    @five_purchase_91_day = LC_days_ago(@five_order_emails, @days_ago,91, 120)
+      @five_purchase_61_day = LC_days_ago(@five_order_emails, @days_ago,61, 90)
 
-    @five_purchase_61_day = LC_days_ago(@five_order_emails, @days_ago,61, 90)
+      @five_purchase_31_day = LC_days_ago(@five_order_emails, @days_ago,31, 60)
 
-    @five_purchase_31_day = LC_days_ago(@five_order_emails, @days_ago,31, 60)
+      @five_purchase_0_day = LC_days_ago(@five_order_emails, @days_ago,0, 30)
 
-    @five_purchase_0_day = LC_days_ago(@five_order_emails, @days_ago,0, 30)
+      @four_purchase_181_day = LC_days_ago(@four_order_emails, @days_ago,181, 999999)
 
-    @four_purchase_181_day = LC_days_ago(@four_order_emails, @days_ago,181, 999999)
+      @four_purchase_121_day = LC_days_ago(@four_order_emails, @days_ago,121, 180)
 
-    @four_purchase_121_day = LC_days_ago(@four_order_emails, @days_ago,121, 180)
+      @four_purchase_91_day = LC_days_ago(@four_order_emails, @days_ago,91, 120)
 
-    @four_purchase_91_day = LC_days_ago(@four_order_emails, @days_ago,91, 120)
+      @four_purchase_61_day = LC_days_ago(@four_order_emails, @days_ago,61, 90)
 
-    @four_purchase_61_day = LC_days_ago(@four_order_emails, @days_ago,61, 90)
+      @four_purchase_31_day = LC_days_ago(@four_order_emails, @days_ago,31, 60)
 
-    @four_purchase_31_day = LC_days_ago(@four_order_emails, @days_ago,31, 60)
+      @four_purchase_0_day = LC_days_ago(@four_order_emails, @days_ago,0, 30)
 
-    @four_purchase_0_day = LC_days_ago(@four_order_emails, @days_ago,0, 30)
+      @three_purchase_181_day = LC_days_ago(@three_order_emails, @days_ago,181, 999999)
 
-    @three_purchase_181_day = LC_days_ago(@three_order_emails, @days_ago,181, 999999)
+      @three_purchase_121_day = LC_days_ago(@three_order_emails, @days_ago,121, 180)
 
-    @three_purchase_121_day = LC_days_ago(@three_order_emails, @days_ago,121, 180)
+      @three_purchase_91_day = LC_days_ago(@three_order_emails, @days_ago,91, 120)
 
-    @three_purchase_91_day = LC_days_ago(@three_order_emails, @days_ago,91, 120)
+      @three_purchase_61_day = LC_days_ago(@three_order_emails, @days_ago,61, 90)
 
-    @three_purchase_61_day = LC_days_ago(@three_order_emails, @days_ago,61, 90)
+      @three_purchase_31_day = LC_days_ago(@three_order_emails, @days_ago,31, 60)
 
-    @three_purchase_31_day = LC_days_ago(@three_order_emails, @days_ago,31, 60)
+      @three_purchase_0_day = LC_days_ago(@three_order_emails, @days_ago,0, 30)
 
-    @three_purchase_0_day = LC_days_ago(@three_order_emails, @days_ago,0, 30)
+      @two_purchase_181_day = LC_days_ago(@two_order_emails, @days_ago,181, 999999)
 
-    @two_purchase_181_day = LC_days_ago(@two_order_emails, @days_ago,181, 999999)
+      @two_purchase_121_day = LC_days_ago(@two_order_emails, @days_ago,121, 180)
 
-    @two_purchase_121_day = LC_days_ago(@two_order_emails, @days_ago,121, 180)
+      @two_purchase_91_day = LC_days_ago(@two_order_emails, @days_ago,91, 120)
 
-    @two_purchase_91_day = LC_days_ago(@two_order_emails, @days_ago,91, 120)
+      @two_purchase_61_day = LC_days_ago(@two_order_emails, @days_ago,61, 90)
 
-    @two_purchase_61_day = LC_days_ago(@two_order_emails, @days_ago,61, 90)
+      @two_purchase_31_day = LC_days_ago(@two_order_emails, @days_ago,31, 60)
 
-    @two_purchase_31_day = LC_days_ago(@two_order_emails, @days_ago,31, 60)
+      @two_purchase_0_day = LC_days_ago(@two_order_emails, @days_ago,0, 30)
 
-    @two_purchase_0_day = LC_days_ago(@two_order_emails, @days_ago,0, 30)
+      @one_purchase_181_day = LC_days_ago(@one_order_emails, @days_ago,181, 999999)
 
-    @one_purchase_181_day = LC_days_ago(@one_order_emails, @days_ago,181, 999999)
+      @one_purchase_121_day = LC_days_ago(@one_order_emails, @days_ago,121, 180)
 
-    @one_purchase_121_day = LC_days_ago(@one_order_emails, @days_ago,121, 180)
+      @one_purchase_91_day = LC_days_ago(@one_order_emails, @days_ago,91, 120)
 
-    @one_purchase_91_day = LC_days_ago(@one_order_emails, @days_ago,91, 120)
+      @one_purchase_61_day = LC_days_ago(@one_order_emails, @days_ago,61, 90)
 
-    @one_purchase_61_day = LC_days_ago(@one_order_emails, @days_ago,61, 90)
+      @one_purchase_31_day = LC_days_ago(@one_order_emails, @days_ago,31, 60)
 
-    @one_purchase_31_day = LC_days_ago(@one_order_emails, @days_ago,31, 60)
+      @one_purchase_0_day = LC_days_ago(@one_order_emails, @days_ago,0, 30)
 
-    @one_purchase_0_day = LC_days_ago(@one_order_emails, @days_ago,0, 30)
+      @best_emails = @five_purchase_61_day.merge(@five_purchase_31_day.merge(@five_purchase_0_day.merge(@four_purchase_61_day.merge(@four_purchase_31_day.merge(@four_purchase_0_day))))).keys
 
-    @best_emails = @five_purchase_61_day.merge(@five_purchase_31_day.merge(@five_purchase_0_day.merge(@four_purchase_61_day.merge(@four_purchase_31_day.merge(@four_purchase_0_day))))).keys
+      @best_hash = Hash.new
+      @best_emails.each do |email|
+        @best_hash[email] = 'best'
+      end
 
-    @best_hash = Hash.new
-    @best_emails.each do |email|
-      @best_hash[email] = 'best'
+      @disengaged_best_emails = @five_purchase_181_day.merge(@five_purchase_121_day.merge(@five_purchase_91_day.merge(@four_purchase_181_day.merge(@four_purchase_121_day.merge(@four_purchase_91_day))))).keys
+
+      @disengaged_best_hash = Hash.new
+      @disengaged_best_emails.each do |email|
+        @disengaged_best_hash[email] = 'disengaged_best'
+      end
+
+      @disengaged_light_emails = @three_purchase_181_day.merge(@three_purchase_121_day.merge(@three_purchase_91_day.merge(@two_purchase_181_day.merge(@two_purchase_121_day.merge(@two_purchase_91_day.merge(@one_purchase_181_day.merge(@one_purchase_121_day.merge(@one_purchase_91_day)))))))).keys
+
+      @disengaged_light_hash = Hash.new
+      @disengaged_light_emails.each do |email|
+        @disengaged_light_hash[email] = 'disengaged_light'
+      end
+
+      @new_high_potential_emails = @three_purchase_61_day.merge(@three_purchase_31_day.merge(@three_purchase_0_day.merge(@two_purchase_61_day.merge(@two_purchase_31_day.merge(@two_purchase_0_day.merge(@one_purchase_61_day.merge(@one_purchase_31_day))))))).keys
+
+      @new_high_potential_hash = Hash.new
+      @new_high_potential_emails.each do |email|
+        @new_high_potential_hash[email] = 'new_high_potential'
+      end
+
+      @new_emails = @one_purchase_0_day.keys
+
+      @new_hash = Hash.new
+      @new_emails.each do |email|
+        @new_hash[email] = 'new'
+      end
+
+      email_rank_hash = @best_hash.merge(@disengaged_best_hash).merge(@disengaged_light_hash).merge(@new_high_potential_hash).merge(@new_hash)
+      respond_to do |format|
+        format.html
+        format.csv{send_data hash_to_csv(email_rank_hash)}
+      end
     end
-
-    @disengaged_best_emails = @five_purchase_181_day.merge(@five_purchase_121_day.merge(@five_purchase_91_day.merge(@four_purchase_181_day.merge(@four_purchase_121_day.merge(@four_purchase_91_day))))).keys
-
-    @disengaged_best_hash = Hash.new
-    @disengaged_best_emails.each do |email|
-      @disengaged_best_hash[email] = 'disengaged_best'
-    end
-
-    @disengaged_light_emails = @three_purchase_181_day.merge(@three_purchase_121_day.merge(@three_purchase_91_day.merge(@two_purchase_181_day.merge(@two_purchase_121_day.merge(@two_purchase_91_day.merge(@one_purchase_181_day.merge(@one_purchase_121_day.merge(@one_purchase_91_day)))))))).keys
-
-    @disengaged_light_hash = Hash.new
-    @disengaged_light_emails.each do |email|
-      @disengaged_light_hash[email] = 'disengaged_light'
-    end
-
-    @new_high_potential_emails = @three_purchase_61_day.merge(@three_purchase_31_day.merge(@three_purchase_0_day.merge(@two_purchase_61_day.merge(@two_purchase_31_day.merge(@two_purchase_0_day.merge(@one_purchase_61_day.merge(@one_purchase_31_day))))))).keys
-
-    @new_high_potential_hash = Hash.new
-    @new_high_potential_emails.each do |email|
-      @new_high_potential_hash[email] = 'new_high_potential'
-    end
-
-    @new_emails = @one_purchase_0_day.keys
-
-    @new_hash = Hash.new
-    @new_emails.each do |email|
-      @new_hash[email] = 'new'
-    end
-
-    email_rank_hash = @best_hash.merge(@disengaged_best_hash).merge(@disengaged_light_hash).merge(@new_high_potential_hash).merge(@new_hash)
-    respond_to do |format|
-      format.html
-      format.csv{send_data hash_to_csv(email_rank_hash)}
-    end
-
   end
 
   def upload
@@ -219,15 +219,15 @@ class SalesController < ApplicationController
   def import_csv_test
     user_id = params[:user_id]
     import = ImportSaleCSV.new(file: params[:file]) do
-        after_build do |sale|
-          sale.user_id = user_id
+      after_build do |sale|
+        sale.user_id = user_id
           #refactor
           skip! if sale.email == nil
           skip! if sale.order_date == nil
           skip! if sale.amount == nil
         end
       end
-    import.run!
+      import.run!
     # p "*" * 50
     # p import.report.create_skipped_rows[0].row_array
     # p "*" * 50
