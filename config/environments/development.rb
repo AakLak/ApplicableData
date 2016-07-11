@@ -39,11 +39,12 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  # I added these for Devise emailing
+  # Added these for Devise emailing
   config.action_mailer.default_url_options = { :host => 'localhost:3000'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
 
+  # Added these for Bullet gem
   config.after_initialize do
     Bullet.enable = true
     Bullet.console = true
