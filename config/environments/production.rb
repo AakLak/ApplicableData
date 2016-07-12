@@ -76,6 +76,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #Added this for Devise
+  config.action_mailer.default_url_options = { :host => 'lhttps://safe-tundra-52063.herokuapp.com'}
 end
 
 ActionMailer::Base.smtp_settings = {
