@@ -18,10 +18,10 @@ class Sale < ActiveRecord::Base
 		# @ftp_password = "Jc5sJqTK"
 
 		Net::FTP.open(domain, user, pass) do |ftp|
+			ftp.passive = true
 			files = ftp.list
 			#ftp.chdir("/root_level/nested/")
 			ftp.chdir(directory)
-			ftp.passive = true
 			ftp.getbinaryfile("large_sample_data.csv", './public/uploads/gotcha.csv')
 			CSV.foreach('./public/uploads/gotcha.csv', headers:true) do |row|
 				Sale.create! row.to_hash.merge(user_id: user_id)
