@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class SalesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   setup do
     @sale = sales(:one)
   end

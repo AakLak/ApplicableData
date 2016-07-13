@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class NavControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   test "should get features" do
     get :features
     assert_response :success

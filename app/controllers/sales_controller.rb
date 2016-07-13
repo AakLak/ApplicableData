@@ -164,7 +164,9 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     # @sale = Sale.new
-    @sale = current_user.sales.build
+    if current_user
+      @sale = current_user.sales.build
+    end
   end
 
   # GET /sales/1/edit
@@ -174,6 +176,7 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
+    if current_user
     #@sale = Sale.new(sale_params)
     @sale = current_user.sales.build(sale_params)
     respond_to do |format|
@@ -185,7 +188,10 @@ class SalesController < ApplicationController
         format.json { render json: @sale.errors, status: :unprocessable_entity }
       end
     end
+  else
+    redirect_to root_path, notice: 'You must be logged in to do this'
   end
+end
 
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
