@@ -22,4 +22,4 @@ test:
 
 production:
   adapter: postgresql
-  database: db/production_db
+  database: ENV['HEROKU_POSTGRESQL_GOLD_URL']
