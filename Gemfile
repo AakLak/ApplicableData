@@ -23,6 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #I ADDED THESE #
 gem 'bootstrap-sass'
 gem 'bootstrap-table-rails' 
+gem 'font-awesome-sass'
 gem 'devise'
 gem 'american_date'
 gem 'csv-importer'
