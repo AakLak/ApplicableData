@@ -22,4 +22,5 @@ test:
 
 production:
   adapter: postgresql
-  database: db/production_db
+  database: ENV['DATABASE_URL']
+
