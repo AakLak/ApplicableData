@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'nav/pricing'
 
   get 'nav/contact'
+
+  get 'nav/testpage'
   
   resources :sales do
     collection do
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
       get 'rfm_score'
       get 'lifecycle_grid'
       get 'upload'
+      get 'upload_ftp'
     end
 
   end

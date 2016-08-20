@@ -7,4 +7,7 @@ class NavController < ApplicationController
 
   def contact
   end
+
+  def testpage
+  end
 end

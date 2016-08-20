@@ -155,6 +155,10 @@ class SalesController < ApplicationController
   def upload
     @user_id = current_user.id if current_user
   end
+
+  def upload_ftp
+    @user_id = current_user.id if current_user
+  end
   
   # GET /sales/1
   # GET /sales/1.json
