@@ -1,103 +1,24 @@
 <% if user_signed_in? %>
 
+<div class="col-lg-3 col-xs-3"></div>
+<div class="col-lg-6 col-xs-6">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><i class="fa fa-file-o"></i> Upload Local File</h3>
+    </div> 
+    <div class="box-body">
+      <%= form_tag import_csv_test_sales_path, multipart: true do %>
 
-<div class="col-lg-2 col-xs-2"></div>
-<section class="col-lg-8 col-xs-8 connectedSortable ui-sortable">
-  <!-- Custom tabs (Charts with tabs)-->
-  <div class="nav-tabs-custom" style="cursor: move;">
-    <!-- Tabs within a box -->
-    <ul class="nav nav-tabs pull-right ui-sortable-handle">
-      <li class="active"><a href="#revenue-chart" data-toggle="tab" aria-expanded="true">Local File</a></li>
-      <li class=""><a href="#sales-chart" data-toggle="tab" aria-expanded="false">FTP</a></li>
-      <li class="pull-left header"><i class="fa fa-upload"></i> Upload</li>
-    </ul>
-    <div class="tab-content no-padding">
-      <!-- Morris chart - Sales -->
-      <div class="chart tab-pane active">
-        <div class="box-body">
-          <%= form_tag import_csv_test_sales_path, multipart: true do %>
-          <%= file_field_tag :file %>
-          <br><br>
-          <%= button_tag "Upload", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>Uploading..."} %>
-          <%= hidden_field_tag :user_id , @user_id %>
-          <% end %>
-        </div>
-      </div>
-      <div class="box box-info tab-pane" id="sales-chart">
-        <div class="box-body">
-          <div class="form-group">
-            <%= form_tag import_ftp_sales_path,  multipart: true do %>
+      <%= file_field_tag :file %>  
 
-            <%= label_tag :domain %>
-            <%= text_field_tag :domain, params[:domain], placeholder: "/invoices/2016/", class: "form-control" %>
-            <br>
-            <%= label_tag :directory %>
-            <%= text_field_tag :directory, params[:directory], class: "form-control" %>
-            <br>
-            <%= label_tag :ftp_user %>
-            <%= text_field_tag :ftp_user, params[:ftp_user], class: "form-control" %>
-            <br>
-            <%= label_tag :ftp_password %>
-            <%= text_field_tag :ftp_password, params[:ftp_password], class: "form-control" %>
-            <br>
-            <div class="box-footer">
-              <%= submit_tag "Import FTP File", :class => "pull-right btn btn-primary" %>
-            </div>
-            <% end -%>
-          </div>
-        </div>
-      </div>
     </div>
-    <!-- /.nav-tabs-custom -->
-
-    <!-- quick email widget -->
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class='row'>
-      <div class="col-md-6">
-       <div class="panel panel-primary">
-        <div class="panel-heading"><h2>Import Local File</h2></div>
-        <div class="panel-body">
-         <%= form_tag import_csv_test_sales_path, multipart: true do %>
-         <%= file_field_tag :file %>
-         <br><br>
-         <%= button_tag "Upload", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>Uploading..."} %>
-         <%= hidden_field_tag :user_id , @user_id %>
-         <% end %>
-       </div>
-     </div>
-   </div>
-
-
-   <div class="col-md-6"><div class="panel panel-primary">
-
-    <div class="panel-heading">
-      <h2>Import via FTP</h2>
-    </div>
-    <div class="panel-body">
-      <%= form_tag import_ftp_sales_path, multipart: true do %>
-
-      <%= label_tag :domain %>
-      <%= text_field_tag :domain, params[:domain], placeholder: "/invoices/2016/" %>
-      <br>
-      <%= label_tag :directory %>
-      <%= text_field_tag :directory, params[:directory] %>
-      <br>
-      <%= label_tag :ftp_user %>
-      <%= text_field_tag :ftp_user, params[:ftp_user] %>
-      <br>
-      <%= label_tag :ftp_password %>
-      <%= text_field_tag :ftp_password, params[:ftp_password] %>
-      <br>
-      <%= submit_tag "Import FTP File", :class => "btn btn-primary" %>
-      <% end -%>
-    </div>
-
-  </div></div></div>
+    <br><br>
+    <%= button_tag "Upload", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>Uploading..."} %>
+    <%= hidden_field_tag :user_id , @user_id %>
+    <% end %>
+  </div>
+</div>
+</div>
 
   <% else %>
 
