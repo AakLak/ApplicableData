@@ -3,9 +3,11 @@
 <div class="col-lg-2 col-xs-8"></div>
 <div class="col-lg-8 col-xs-8">
   <div class="box box-primary">
+
     <div class="box-header with-border">
-      <h2>Listing Sales</h2>
+      <h2 cass="box-title"><i class="fa fa-sticky-note-o"></i> Listing Sales</h2>
     </div>
+    
     <div class='box-body'>
       <table class="table table-hover table-bordered">
 
@@ -22,23 +24,23 @@
 
           <%= will_paginate @sales, inner_window: 2 %>
 
-          </br>
-          <% @sales.each do |sale| %>
-          <tr>
-            <td><%= sale.email %></td>
-            <td><%= sale.order_date %></td>
-            <td><%= sale.amount %></td>
-            <td><%= link_to 'Show', sale, class: "btn btn-primary" %></td>
-            <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-success" %></td>
-            <td><%= link_to 'Destroy', sale, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-          <% end %>
-        </tbody> 
+        </br>
+        <% @sales.each do |sale| %>
+        <tr>
+          <td><%= sale.email %></td>
+          <td><%= sale.order_date %></td>
+          <td><%= sale.amount %></td>
+          <td><%= link_to 'Show', sale, class: "btn btn-primary" %></td>
+          <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-success" %></td>
+          <td><%= link_to 'Destroy', sale, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody> 
 
-      </table>
+    </table>
 
-    </div>
   </div>
+</div>
 </div>
 
 <% else %>
