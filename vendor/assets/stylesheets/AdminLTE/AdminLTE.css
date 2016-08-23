@@ -2581,14 +2581,9 @@ the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)*/
   border-top-color: #d2d6de;
 }
 /* PAGINATION */
-.pagination > a {
+.pagination > li > a {
   background: #fafafa;
   color: #666;
-  position: relative;
-  float: left;
-  margin-left: -1px;
-  text-decoration: none;
-  border: 1px solid #ddd;
 }
 .pagination.pagination-flat > li > a {
   border-radius: 0 !important;

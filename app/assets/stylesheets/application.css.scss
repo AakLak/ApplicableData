@@ -27,6 +27,11 @@
   background-color: #00FFFF;
 }
 
+.center_me{
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
 .inputfile {
   width: 0.1px;
   height: 0.1px;
@@ -38,15 +43,17 @@
 
 .pagination {
   margin: 0 auto !important;
-  width: 90% !important;
-  display: block;
+  width: 100% !important;
+  display: block !important;
 }
 
 .pagination > a{
-  background: #fafafa;
-  color: #666;
-  padding: 5px 10px;
-  line-height: 1.5;
+  background: #fafafa !important;
+  color: #666 !important;
+  padding: 5px 10px !important;
+  line-height: 1.5 !important;
+  border: 1px solid #ddd !important;
+  float: left !important;
 }
 
 .gap{
