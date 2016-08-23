@@ -1,114 +1,149 @@
 <% if user_signed_in? %>
 
-<div class="container">
-  <%= link_to "Download to CSV", "/sales/lifecycle_grid.csv", class: "btn btn-primary" %>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th></th>
-        <th colspan="6">Days Since Last Purchase</th>
-        <th>Totals</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th># of Purchases</th>
-        <th>181+</th>
-        <th>121-180</th>
-        <th>91 - 120</th>
-        <th>61 - 90</th>
-        <th>31 - 60</th>
-        <th><= 30</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th>>=5</th>
-        <td class="disengaged_best"><%= @five_purchase_181_day.count %></td>
-        <td class="disengaged_best"><%= @five_purchase_121_day.count %></td>
-        <td class="disengaged_best"><%= @five_purchase_91_day.count %></td>
-        <td class="best"><%= @five_purchase_61_day.count %></td>
-        <td class="best"><%= @five_purchase_31_day.count %></td>
-        <td class="best"><%= @five_purchase_0_day.count %></td>
-        <th><%= [@five_purchase_181_day.count, @five_purchase_121_day.count, @five_purchase_91_day.count, @five_purchase_61_day.count, @five_purchase_31_day.count, @five_purchase_0_day.count].sum %></th>
-      </tr>
-      <tr>
-        <th>4</th>
-        <td class="disengaged_best"><%= @four_purchase_181_day.count %></td>
-        <td class="disengaged_best"><%= @four_purchase_121_day.count %></td>
-        <td class="disengaged_best"><%= @four_purchase_91_day.count %></td>
-        <td class="best"><%= @four_purchase_61_day.count %></td>
-        <td class="best"><%= @four_purchase_31_day.count %></td>
-        <td class="best"><%= @four_purchase_0_day.count %></td>
-        <th><%= [@four_purchase_181_day.count, @four_purchase_121_day.count, @four_purchase_91_day.count, @four_purchase_61_day.count, @four_purchase_31_day.count, @four_purchase_0_day.count].sum %></th>
-      </tr>
-      <tr>
-        <th>3</th>
-        <td class="disengaged_light"><%= @three_purchase_181_day.count %></td>
-        <td class="disengaged_light"><%= @three_purchase_121_day.count %></td>
-        <td class="disengaged_light"><%= @three_purchase_91_day.count %></td>
-        <td class="new_high_value"><%= @three_purchase_61_day.count %></td>
-        <td class="new_high_value"><%= @three_purchase_31_day.count %></td>
-        <td class="new_high_value"><%= @three_purchase_0_day.count %></td>
-        <th><%= [@three_purchase_181_day.count, @three_purchase_121_day.count, @three_purchase_91_day.count, @three_purchase_61_day.count, @three_purchase_31_day.count, @three_purchase_0_day.count].sum %></th>
-      </tr>
-      <tr>
-        <th>2</th>
-        <td class="disengaged_light"><%= @two_purchase_181_day.count %></td>
-        <td class="disengaged_light"><%= @two_purchase_121_day.count %></td>
-        <td class="disengaged_light"><%= @two_purchase_91_day.count %></td>
-        <td class="new_high_value"><%= @two_purchase_61_day.count %></td>
-        <td class="new_high_value"><%= @two_purchase_31_day.count %></td>
-        <td class="new_high_value"><%= @two_purchase_0_day.count %></td>
-        <th><%= [@two_purchase_181_day.count, @two_purchase_121_day.count, @two_purchase_91_day.count, @two_purchase_61_day.count, @two_purchase_31_day.count, @two_purchase_0_day.count].sum %></th>
-      </tr>
-      <tr>
-        <th>1</th>
-        <td class="disengaged_light"><%= @one_purchase_181_day.count %></td>
-        <td class="disengaged_light"><%= @one_purchase_121_day.count %></td>
-        <td class="disengaged_light"><%= @one_purchase_91_day.count %></td>
-        <td class="new_high_value"><%= @one_purchase_61_day.count %></td>
-        <td class="new_high_value"><%= @one_purchase_31_day.count %></td>
-        <td class="new"><%= @one_purchase_0_day.count %></td>
-        <th><%= [@one_purchase_181_day.count, @one_purchase_121_day.count, @one_purchase_91_day.count, @one_purchase_61_day.count, @one_purchase_31_day.count, @one_purchase_0_day.count].sum %></th>
-      </tr>
-      <tr>
-        <th>Total</th>
-        <th><%= [@five_purchase_181_day.count, @four_purchase_181_day.count, @three_purchase_181_day.count, @two_purchase_181_day.count, @one_purchase_181_day.count].sum %></th>
-        <th><%= [@five_purchase_121_day.count, @four_purchase_121_day.count, @three_purchase_121_day.count, @two_purchase_121_day.count, @one_purchase_121_day.count].sum %></th>
-        <th><%= [@five_purchase_91_day.count, @four_purchase_91_day.count, @three_purchase_91_day.count, @two_purchase_91_day.count, @one_purchase_91_day.count].sum %></th>
-        <th><%= [@five_purchase_61_day.count, @four_purchase_61_day.count, @three_purchase_61_day.count, @two_purchase_61_day.count, @one_purchase_61_day.count].sum %></th>
-        <th><%= [@five_purchase_31_day.count, @four_purchase_31_day.count, @three_purchase_31_day.count, @two_purchase_31_day.count, @one_purchase_31_day.count].sum %></th>
-        <th><%= [@five_purchase_0_day.count, @four_purchase_0_day.count, @three_purchase_0_day.count, @two_purchase_0_day.count, @one_purchase_0_day.count].sum %></th>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="col-lg-1 col-xs-1"></div>
+<div class="col-lg-10 col-xs-10">
+
+  <div class="box box-primary">
+
+    <div class="box-header with-border">
+      <h3><i class="fa fa-table"></i> Lifecycle Grid</h3>
+    </div>
+
+    <div class="box-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th></th>
+            <th colspan="6">Days Since Last Purchase</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th># of Purchases</th>
+            <th>181+</th>
+            <th>121-180</th>
+            <th>91 - 120</th>
+            <th>61 - 90</th>
+            <th>31 - 60</th>
+            <th><= 30</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>>=5</th>
+            <td class="disengaged_best"><%= @five_purchase_181_day.count %></td>
+            <td class="disengaged_best"><%= @five_purchase_121_day.count %></td>
+            <td class="disengaged_best"><%= @five_purchase_91_day.count %></td>
+            <td class="best"><%= @five_purchase_61_day.count %></td>
+            <td class="best"><%= @five_purchase_31_day.count %></td>
+            <td class="best"><%= @five_purchase_0_day.count %></td>
+            <th><%= [@five_purchase_181_day.count, @five_purchase_121_day.count, @five_purchase_91_day.count, @five_purchase_61_day.count, @five_purchase_31_day.count, @five_purchase_0_day.count].sum %></th>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td class="disengaged_best"><%= @four_purchase_181_day.count %></td>
+            <td class="disengaged_best"><%= @four_purchase_121_day.count %></td>
+            <td class="disengaged_best"><%= @four_purchase_91_day.count %></td>
+            <td class="best"><%= @four_purchase_61_day.count %></td>
+            <td class="best"><%= @four_purchase_31_day.count %></td>
+            <td class="best"><%= @four_purchase_0_day.count %></td>
+            <th><%= [@four_purchase_181_day.count, @four_purchase_121_day.count, @four_purchase_91_day.count, @four_purchase_61_day.count, @four_purchase_31_day.count, @four_purchase_0_day.count].sum %></th>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td class="disengaged_light"><%= @three_purchase_181_day.count %></td>
+            <td class="disengaged_light"><%= @three_purchase_121_day.count %></td>
+            <td class="disengaged_light"><%= @three_purchase_91_day.count %></td>
+            <td class="new_high_value"><%= @three_purchase_61_day.count %></td>
+            <td class="new_high_value"><%= @three_purchase_31_day.count %></td>
+            <td class="new_high_value"><%= @three_purchase_0_day.count %></td>
+            <th><%= [@three_purchase_181_day.count, @three_purchase_121_day.count, @three_purchase_91_day.count, @three_purchase_61_day.count, @three_purchase_31_day.count, @three_purchase_0_day.count].sum %></th>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td class="disengaged_light"><%= @two_purchase_181_day.count %></td>
+            <td class="disengaged_light"><%= @two_purchase_121_day.count %></td>
+            <td class="disengaged_light"><%= @two_purchase_91_day.count %></td>
+            <td class="new_high_value"><%= @two_purchase_61_day.count %></td>
+            <td class="new_high_value"><%= @two_purchase_31_day.count %></td>
+            <td class="new_high_value"><%= @two_purchase_0_day.count %></td>
+            <th><%= [@two_purchase_181_day.count, @two_purchase_121_day.count, @two_purchase_91_day.count, @two_purchase_61_day.count, @two_purchase_31_day.count, @two_purchase_0_day.count].sum %></th>
+          </tr>
+          <tr>
+            <th>1</th>
+            <td class="disengaged_light"><%= @one_purchase_181_day.count %></td>
+            <td class="disengaged_light"><%= @one_purchase_121_day.count %></td>
+            <td class="disengaged_light"><%= @one_purchase_91_day.count %></td>
+            <td class="new_high_value"><%= @one_purchase_61_day.count %></td>
+            <td class="new_high_value"><%= @one_purchase_31_day.count %></td>
+            <td class="new"><%= @one_purchase_0_day.count %></td>
+            <th><%= [@one_purchase_181_day.count, @one_purchase_121_day.count, @one_purchase_91_day.count, @one_purchase_61_day.count, @one_purchase_31_day.count, @one_purchase_0_day.count].sum %></th>
+          </tr>
+          <tr>
+            <th>Total</th>
+            <th><%= [@five_purchase_181_day.count, @four_purchase_181_day.count, @three_purchase_181_day.count, @two_purchase_181_day.count, @one_purchase_181_day.count].sum %></th>
+            <th><%= [@five_purchase_121_day.count, @four_purchase_121_day.count, @three_purchase_121_day.count, @two_purchase_121_day.count, @one_purchase_121_day.count].sum %></th>
+            <th><%= [@five_purchase_91_day.count, @four_purchase_91_day.count, @three_purchase_91_day.count, @two_purchase_91_day.count, @one_purchase_91_day.count].sum %></th>
+            <th><%= [@five_purchase_61_day.count, @four_purchase_61_day.count, @three_purchase_61_day.count, @two_purchase_61_day.count, @one_purchase_61_day.count].sum %></th>
+            <th><%= [@five_purchase_31_day.count, @four_purchase_31_day.count, @three_purchase_31_day.count, @two_purchase_31_day.count, @one_purchase_31_day.count].sum %></th>
+            <th><%= [@five_purchase_0_day.count, @four_purchase_0_day.count, @three_purchase_0_day.count, @two_purchase_0_day.count, @one_purchase_0_day.count].sum %></th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box-footer">
+      <%= link_to "Download to CSV", "/sales/lifecycle_grid.csv", class: "btn btn-primary pull-right" %>
+    </div>
+    </div>
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+       <li class="active"><a href="#best" data-toggle="tab" aria-expanded="true">
+         <i class="fa fa-circle bestdot"></i> Best</a>
+       </li>
+       <li class="">
+        <a href="#disengaged_best" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle disengaged_bestdot"></i> Disengaged Best</a>
+      </li>
+      <li class="">
+        <a href="#disengaged_light" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle disengaged_lightdot"></i> Disengaged Light</a>
+      </li>
+      <li class="">
+        <a href="#new_high_value" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle new_high_valuedot"></i> New High Value</a>
+      </li>
+      <li class="">
+        <a href="#new" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle newdot"></i> New</a>
+      </li>
+
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane" id="best">
+        <p><%= @best_emails.join(', ') %></p>
+      </div>
+      <!-- /.tab-pane -->
+      <div class="tab-pane active" id="disengaged_best">
+        <%= @disengaged_best_emails.join(', ') %>
+
+      </div>
+      <!-- /.tab-pane -->
+      <div class="tab-pane active" id="disengaged_light">
+        <%= @disengaged_light_emails.join(', ') %>
+
+      </div>
+      <!-- /.tab-pane -->
+      <div class="tab-pane" id="new_high_value">
+        <%= @new_high_potential_emails.join(', ') %>
+      </div>
+      <!-- /.tab-pane -->
+      <div class="tab-pane active" id="new">
+        <%= @new_emails.join(', ') %>
+      </div>
+    </div>
+    <!-- /.tab-content -->
+  </div>
+
 </div>
 
-
-<div class="container">
-  <h3>Best: <%= @best_emails.length%></h3><br>
-  <%= @best_emails %>
-  <br><br>
-
-  <h3>Disengaged Best: <%= @disengaged_best_emails.length%></h3><br>
-  <%= @disengaged_best_emails %>
-  <br><br>
-
-  <h3>Disengaged Light: <%= @disengaged_light_emails.length%></h3><br>
-  <%= @disengaged_light_emails %>
-  <br><br>
-
-  <h3>New with High Potential: <%= @new_high_potential_emails.length%></h3><br>
-  <%= @new_high_potential_emails %>
-  <br><br>
-
-  <h3>New: <%= @new_emails.length%></h3><br>
-  <%= @new_emails %>
-  <br><br>
-
-  
-</div>
 
 <% else %>
 <p class="alert alert-danger">You must be signed in to view this page</p>
