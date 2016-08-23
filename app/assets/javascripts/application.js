@@ -15,5 +15,5 @@
 //= require bootstrap
 //= require bootstrap-table
 //= require turbolinks
-//= require ADminLTE/app.js
+//= require AdminLTE/app.js
 //= require_tree .
