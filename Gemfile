@@ -29,7 +29,7 @@ gem 'american_date'
 gem 'csv-importer'
 gem 'puma'
 gem 'will_paginate', '~> 3.1.0'
-
+gem 'jquery-turbolinks'
 
 #I ADDED THESE #
 

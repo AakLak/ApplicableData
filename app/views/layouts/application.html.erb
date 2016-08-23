@@ -6,91 +6,105 @@
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
-	<div class="wrapper">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.AdminLTE.layout.activate();
+    });
 
-		<header class="main-header">
-			<!-- Logo -->
-			<a href="index2.html" class="logo">
-				<!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini"><b>Ap</b>Da</span>
-				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>Applicable</b>Data</span>
-			</a>
-			<!-- Header Navbar: style can be found in header.less -->
-			<nav class="navbar navbar-static-top">
-				<!-- Sidebar toggle button-->
-				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-					<span class="sr-only">Toggle navigation</span>
-				</a>
+    $(document).on('page:load', function() {
+      $.AdminLTE.layout.activate();
+    });
 
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
-						
-						<!-- User Account: style can be found in dropdown.less -->
-						<li class="dropdown user user-menu">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-user pull-right"></i>
-								<span class="hidden-xs"> <%= current_user.email %></span>
-								<span class="pull-right-container">
-									<!-- <i class="fa fa-user pull-right"></i> -->
-								</span>
-							</a>
-							<ul class="dropdown-menu">
-								<!-- Menu Footer-->
-								<li class="user-footer">
-									<div class="pull-left">
-										<a href="/users/edit" class="btn btn-default btn-flat">Profile</a>
-									</div>
+    $(document).on('page:change', function() {
+      $.AdminLTE.layout.activate();
+    });
+  </script>
+  <div class="wrapper">
 
-									<div class="pull-right">
-										<a href="/users/sign_out" class="btn btn-default btn-flat">Sign out</a>
-									</div>
-								</li>
-							</ul>
-						</li>
+    <header class="main-header">
+     <!-- Logo -->
+     <a href="index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>Ap</b>Da</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Applicable</b>Data</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+       <span class="sr-only">Toggle navigation</span>
+     </a>
 
-					</ul>
-				</div>
-			</nav>
-		</header>
-		<!-- Left side column. contains the logo and sidebar -->
-		<aside class="main-sidebar">
-			<!-- sidebar: style can be found in sidebar.less -->
-			<section class="sidebar">
-				<!-- sidebar menu: : style can be found in sidebar.less -->
-				<ul class="sidebar-menu">
-					<li class="header"><i class="fa fa-upload"></i> UPLOAD</li>
-					<li class="treeview">
-						<a href="/sales/upload/">
-							<span><i class="fa fa-file-o"></i> Local File</span>
-							<span class="pull-right-container">
-							</span>
-						</a>
-					</li>
-					<li class="treeview">
-						<a href="/sales/upload_ftp">
-							<span><i class="fa fa-upload"></i> FTP Upload</span>
-							<span class="pull-right-container">
-							</span>
-						</a>
-					</li>
+     <div class="navbar-custom-menu">
+       <ul class="nav navbar-nav">
 
-					<li class="header"><i class="fa fa-line-chart"></i> APPLICABLE DATA</li>
-					<li class="treeview">
-						<a href="/sales">
-							<span><i class="fa fa-sticky-note-o"></i> View Data</span>
-							<span class="pull-right-container">
-							</span>
-						</a>
-					</li>
-					<li class="treeview">
-						<a href="/sales/lifecycle_grid">
-							<span><i class="fa fa-table"></i> Lifecycle Grid</span>
-							<span class="pull-right-container">
-							</span>
-						</a>
-					</li>
+        <!-- User Account: style can be found in dropdown.less -->
+        <li class="dropdown user user-menu">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-user pull-right"></i>
+          <span class="hidden-xs"> <%= current_user.email %></span>
+          <span class="pull-right-container">
+           <!-- <i class="fa fa-user pull-right"></i> -->
+         </span>
+       </a>
+       <ul class="dropdown-menu">
+        <!-- Menu Footer-->
+        <li class="user-footer">
+         <div class="pull-left">
+          <a href="/users/edit" class="btn btn-default btn-flat">Profile</a>
+        </div>
+
+        <div class="pull-right">
+          <a href="/users/sign_out" class="btn btn-default btn-flat">Sign out</a>
+        </div>
+      </li>
+    </ul>
+  </li>
+
+</ul>
+</div>
+</nav>
+</header>
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+ <!-- sidebar: style can be found in sidebar.less -->
+ <section class="sidebar">
+  <!-- sidebar menu: : style can be found in sidebar.less -->
+  <ul class="sidebar-menu">
+   <li class="header"><i class="fa fa-upload"></i> UPLOAD</li>
+   <li class="treeview">
+    <a href="/sales/upload/">
+     <span><i class="fa fa-file-o"></i> Local File</span>
+     <span class="pull-right-container">
+     </span>
+   </a>
+ </li>
+ <li class="treeview">
+  <a href="/sales/upload_ftp">
+   <span><i class="fa fa-upload"></i> FTP Upload</span>
+   <span class="pull-right-container">
+   </span>
+ </a>
+</li>
+
+<li class="header"><i class="fa fa-line-chart"></i> APPLICABLE DATA</li>
+<li class="treeview">
+  <a href="/sales">
+   <span><i class="fa fa-sticky-note-o"></i> View Data</span>
+   <span class="pull-right-container">
+   </span>
+ </a>
+</li>
+<li class="treeview">
+  <a href="/sales/lifecycle_grid">
+   <span><i class="fa fa-table"></i> Lifecycle Grid</span>
+   <span class="pull-right-container">
+   </span>
+ </a>
+</li>
 <!--          <li class="treeview">
           <a href="/sales/rmf_score">
             <span><i class="fa fa-sort-numeric-desc"></i> RFM Score</span>
@@ -145,7 +159,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-   <!--  <div class="pull-right hidden-xs">
+<!--     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.6
     </div>
     <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
@@ -385,5 +399,6 @@
 <!-- <script src="dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="dist/js/demo.js"></script> -->
+
 </body>
 </html>

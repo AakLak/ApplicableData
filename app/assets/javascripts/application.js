@@ -11,9 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-table
-//= require turbolinks
 //= require AdminLTE/app.js
+//= require turbolinks
 //= require_tree .
