@@ -5,7 +5,9 @@ class SalesController < ApplicationController
   # GET /sales.json
   def index
     if current_user
-      @sales = current_user.sales
+      @sales = current_user.sales.paginate(page: params[:page], :per_page => 20)
+      @test_pages = current_user.sales.paginate(:page => params[:page])
+
       if @sales.length > 1 
         @most_purchases = @sales.most_purchases
         @newest_purchase = @sales.orders.last.order_date

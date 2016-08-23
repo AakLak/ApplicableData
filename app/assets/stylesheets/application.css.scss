@@ -36,3 +36,50 @@
   z-index: -1;
 }
 
+.pagination {
+  margin: 0 auto !important;
+  width: 90% !important;
+  display: block;
+}
+
+.pagination > a{
+  background: #fafafa;
+  color: #666;
+  padding: 5px 10px;
+  line-height: 1.5;
+}
+
+.gap{
+  background: #fafafa !important;
+  color: #666 !important;
+  padding: 5px 10px !important;
+  line-height: 1.5;
+  border: 1px solid #ddd !important;
+  float: left !important;  
+}
+
+.current{
+  background: #eee !important;
+  color: #666 !important;
+  padding: 5px 10px !important;
+  line-height: 1.5;
+  border: 1px solid #ddd !important;
+  float: left !important;
+}
+.previous_page.disabled {
+  background: #fafafa;
+  color: #666;
+  padding: 5px 10px;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  float: left;
+}
+
+.next_page.disabled{
+  background: #fafafa;
+  color: #666;
+  padding: 5px 10px;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  float: left;
+}

@@ -28,6 +28,8 @@ gem 'devise'
 gem 'american_date'
 gem 'csv-importer'
 gem 'puma'
+gem 'will_paginate', '~> 3.1.0'
+
 
 #I ADDED THESE #
 
