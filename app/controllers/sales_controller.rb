@@ -1,6 +1,6 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :require_login
 
   # GET /sales
   # GET /sales.json
@@ -262,6 +262,11 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
       params.require(:sale).permit(:email, :order_date, :amount)
+    end
+
+    def require_login
+      authenticate_user!
+      # flash.now[:alert] = 'You must be signed in to use this feature!'
     end
 
   end

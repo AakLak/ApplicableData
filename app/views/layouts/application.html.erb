@@ -62,10 +62,10 @@
         </li>
         <% else %>
         <li>
-        <a href="/users/sign_up">Register</a>
+          <a href="/users/sign_up">Register</a>
         </li>
         <li>
-        <a href="/users/sign_in">Log In</a>
+          <a href="/users/sign_in">Log In</a>
         </li>
         <% end %>
       </ul>
@@ -142,21 +142,26 @@
     	<div class="row">
     		<!-- <div class="col-lg-12 col-xs-12"> -->
     		<!-- small box -->
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+        <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+        <% end %>
+        </div>
+        <%= yield %>           
 
-    		<%= yield %>           
+        <!-- </div> -->
 
-    		<!-- </div> -->
+        <!-- ./col -->
 
-    		<!-- ./col -->
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
 
-    		<!-- ./col -->
-    	</div>
-    	<!-- /.row -->
-    	<!-- Main row -->
-    	<div class="row">
-    		
-    	</div>
-    	<!-- /.row (main row) -->
+      </div>
+      <!-- /.row (main row) -->
 
     </section>
     <!-- /.content -->
