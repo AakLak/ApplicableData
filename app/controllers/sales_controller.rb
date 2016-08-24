@@ -1,12 +1,12 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-  before_action :require_login
+  before_action :authenticate_user!
 
   # GET /sales
   # GET /sales.json
   def index
     if current_user
-      @sales = current_user.sales.paginate(page: params[:page], :per_page => 20)
+      @sales = current_user.sales.paginate(page: params[:page], :per_page => 10)
       @test_pages = current_user.sales.paginate(:page => params[:page])
 
       if @sales.length > 1 

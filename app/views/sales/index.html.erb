@@ -1,11 +1,9 @@
-<% if user_signed_in? %>
-
-<div class="col-lg-2 col-xs-8"></div>
+<div class="col-lg-2 col-xs-2"></div>
 <div class="col-lg-8 col-xs-8">
   <div class="box box-primary">
 
     <div class="box-header with-border">
-    <h4 cass="box-title"><i class="fa fa-sticky-note-o"></i> Listing Sales</h4>
+      <h4 cass="box-title"><i class="fa fa-sticky-note-o"></i> Listing Sales</h4>
     </div>
 
     <div class='box-body'>
@@ -21,30 +19,27 @@
         </thead>
 
         <tbody>
+          <div class="center_me">
+            <%= will_paginate @sales, inner_window: 2 %>
+          </div>
+          <% @sales.each do |sale| %>
+          <tr>
+            <td><%= sale.email %></td>
+            <td><%= sale.order_date %></td>
+            <td><%= sale.amount %></td>
+            <td><%= link_to 'Show', sale, class: "btn btn-primary" %></td>
+            <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-success" %></td>
+            <td><%= link_to 'Destroy', sale, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
 
-          <%= will_paginate @sales, inner_window: 2 %>
+        </tbody> 
 
-        </br>
-        <% @sales.each do |sale| %>
-        <tr>
-          <td><%= sale.email %></td>
-          <td><%= sale.order_date %></td>
-          <td><%= sale.amount %></td>
-          <td><%= link_to 'Show', sale, class: "btn btn-primary" %></td>
-          <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-success" %></td>
-          <td><%= link_to 'Destroy', sale, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
-      </tbody> 
-
-    </table>
-
+      </table>
+      <div class="center_me">
+        <%= will_paginate @sales, inner_window: 2 %>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-
-<% else %>
-
-<p class="alert alert-danger">You must be signed in to view this page</p>
-
-<% end %>
+<div class="col-lg-3 col-xs-3"></div>
