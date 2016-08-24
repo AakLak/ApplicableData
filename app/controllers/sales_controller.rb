@@ -1,6 +1,6 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :require_login
 
   # GET /sales
   # GET /sales.json
@@ -266,6 +266,7 @@ end
 
     def require_login
       authenticate_user!
+
       # flash.now[:alert] = 'You must be signed in to use this feature!'
     end
 

@@ -4,3 +4,7 @@ function addAlert() {
    alerts[i].className += ' alert-success';
  }
 }
+
+function reloadPage() {
+  location.reload();
+}
