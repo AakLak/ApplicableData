@@ -226,7 +226,7 @@ end
 
   def import_csv
     Sale.import(params[:file], current_user.id)
-    redirect_to sales_path, notice: "Sales Data Imported Successfully"
+    redirect_to lifecycle_grid_sales, notice: "Sales Data Imported Successfully"
   end
 
   def import_csv_test
@@ -244,13 +244,13 @@ end
     # p "*" * 50
     # p import.report.create_skipped_rows[0].row_array
     # p "*" * 50
-    redirect_to sales_path, notice: import.report.message
+    redirect_to lifecycle_grid_sales_path, notice: import.report.message
   end
 
   def import_ftp
     Sale.ftp_import(params[:domain], params[:directory], params[:ftp_user], params[:ftp_password], current_user.id)
 
-    redirect_to sales_path, notice: "Sales Data Imported Successfully"
+    redirect_to lifecycle_grid_sales_path, notice: import.report.message
   end
 
   private

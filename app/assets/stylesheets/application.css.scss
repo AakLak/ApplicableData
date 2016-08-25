@@ -114,7 +114,9 @@ th, table, td {
   padding: 1.5sem;
 }
 
-#user_email, #user_password{
+#user_email, 
+#user_password,
+#user_password_confirmation{
   width: 100%;
   padding: .5em;
 }
@@ -131,5 +133,9 @@ th, table, td {
 
 .tab-pane{
   overflow: scroll;
-  height: 20em;
+  max-height: 20em;
 }
+
+/*input{
+  border-radius: 4px;
+}*/
