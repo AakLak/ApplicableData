@@ -100,43 +100,43 @@
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
        <li class="active"><a href="#best" data-toggle="tab" aria-expanded="false">
-         <i class="fa fa-circle bestdot"></i> Best</a>
+         <i class="fa fa-circle bestdot"></i> Best (<%= @best_emails.length %>) </a>
        </li>
        <li class="">
-        <a href="#disengaged_best" data-toggle="tab" aria-expanded="true"><i class="fa fa-circle disengaged_bestdot"></i> Disengaged Best</a>
+        <a href="#disengaged_best" data-toggle="tab" aria-expanded="true"><i class="fa fa-circle disengaged_bestdot"></i> Disengaged Best (<%= @disengaged_best_emails.length %>) </a>
       </li>
       <li class="">
-        <a href="#disengaged_light" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle disengaged_lightdot"></i> Disengaged Light</a>
+        <a href="#disengaged_light" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle disengaged_lightdot"></i> Disengaged Light (<%= @disengaged_light_emails.length %>) </a>
       </li>
       <li class="">
-        <a href="#new_high_value" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle new_high_valuedot"></i> New High Value</a>
+        <a href="#new_high_value" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle new_high_valuedot"></i> New High Value (<%= @new_high_potential_emails.length %>) </a>
       </li>
       <li class="">
-        <a href="#new" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle newdot"></i> New</a>
+        <a href="#new" data-toggle="tab" aria-expanded="false"><i class="fa fa-circle newdot"></i> New (<%= @new_emails.length %>) </a>
       </li>
 
     </ul>
     <div class="tab-content">
-      <div class="tab-pane" id="best">
+      <div class="tab-pane active" id="best">
         <p><%= @best_emails.join(', ') %></p>
       </div>
       <!-- /.tab-pane -->
-      <div class="tab-pane active" id="disengaged_best">
-        <%= @disengaged_best_emails.join(', ') %>
+      <div class="tab-pane" id="disengaged_best">
+        <p><%= @disengaged_best_emails.join(', ') %></p>
 
       </div>
       <!-- /.tab-pane -->
-      <div class="tab-pane active" id="disengaged_light">
-        <%= @disengaged_light_emails.join(', ') %>
+      <div class="tab-pane" id="disengaged_light">
+        <p><%= @disengaged_light_emails.join(', ') %></p>
 
       </div>
       <!-- /.tab-pane -->
       <div class="tab-pane" id="new_high_value">
-        <%= @new_high_potential_emails.join(', ') %>
+        <p><%= @new_high_potential_emails.join(', ') %></p>
       </div>
       <!-- /.tab-pane -->
-      <div class="tab-pane active" id="new">
-        <%= @new_emails.join(', ') %>
+      <div class="tab-pane" id="new">
+        <p><%= @new_emails.join(', ') %></p>
       </div>
     </div>
     <!-- /.tab-content -->
