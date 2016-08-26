@@ -6,8 +6,8 @@
     <div class="box-header with-border">
       <h3 class="box-title"><i class="fa fa-file-o"></i> Upload Local File</h3>
     </div> 
-    <div class="box-body uploadbox">
       <%= form_tag import_csv_test_sales_path, multipart: true do %>
+    <div class="box-body uploadbox">
       <%= hidden_field_tag :user_id , @user_id %>
       <%= file_field_tag :file %>  
     </div>
