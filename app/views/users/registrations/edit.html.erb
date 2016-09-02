@@ -19,27 +19,30 @@
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
-
-      <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+      <div class='row'>
+        <div class="col-xs-6">
+          <div class="field">
+          <%= f.label :new_password, 'New Passowrd' %> <i>(blank unless change)</i><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+        </div>
+        <div class='col-xs-6'>
+          <div class="field">
+            <%= f.label :password_confirmation, 'Confirm New Password' %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+        </div>
       </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
-
       <div class="field">
         <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
         <%= f.password_field :current_password, autocomplete: "off" %>
       </div>
     </div>
     <div class="box box-footer">
-    <div class="">
-      <%= f.submit "Update", class:'btn btn-success btn-block' %>
-      
-      <% end %>
+      <div class="">
+        <%= f.submit "Update", class:'btn btn-success btn-block' %>
+
+        <% end %>
 
       <!-- <h3>Cancel my account</h3>
 

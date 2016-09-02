@@ -22,7 +22,7 @@ class Sale < ActiveRecord::Base
 			files = ftp.list
 			#ftp.chdir("/root_level/nested/")
 			ftp.chdir(directory)
-			ftp.getbinaryfile("large_sample_data.csv", './public/uploads/gotcha.csv')
+			ftp.getbinaryfile("applicabledata.csv", './public/uploads/gotcha.csv')
 			CSV.foreach('./public/uploads/gotcha.csv', headers:true) do |row|
 				Sale.create! row.to_hash.merge(user_id: user_id)
 			end
