@@ -55,6 +55,9 @@ group :development, :test do
   gem 'spring'
   # Table Print
   gem 'hirb'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'simplecov', :require => false
+  gem 'shoulda-matchers'
 end
 
 group :development do
