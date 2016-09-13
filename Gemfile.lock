@@ -89,6 +89,8 @@ GEM
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
     font-awesome-sass (4.6.2)
       sass (>= 3.2)
     globalid (0.3.7)
@@ -252,6 +254,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   csv-importer
   devise
+  factory_girl
   font-awesome-sass
   hirb
   jbuilder (~> 2.0)
