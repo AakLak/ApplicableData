@@ -3,12 +3,6 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   get 'nav/features'
-
-  get 'nav/pricing'
-
-  get 'nav/contact'
-
-  get 'nav/testpage'
   
   resources :sales do
     collection do

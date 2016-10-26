@@ -5,17 +5,15 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    if current_user
-      @sales = current_user.sales.paginate(page: params[:page], :per_page => 10)
-      @test_pages = current_user.sales.paginate(:page => params[:page])
+    @sales = current_user.sales.paginate(page: params[:page], :per_page => 10)
+    @test_pages = current_user.sales.paginate(:page => params[:page])
 
-      if @sales.length > 1 
-        @most_purchases = @sales.most_purchases
-        @newest_purchase = @sales.orders.last.order_date
-        @oldest_purchase = @sales.orders.first.order_date
-        @spread = (@newest_purchase - @oldest_purchase).to_f
-        @max_spent = @sales.max_spent
-      end
+    if @sales.length > 1 
+      @most_purchases = @sales.most_purchases
+      @newest_purchase = @sales.orders.last.order_date
+      @oldest_purchase = @sales.orders.first.order_date
+      @spread = (@newest_purchase - @oldest_purchase).to_f
+      @max_spent = @sales.max_spent
     end
     # render stream: true
   end  
