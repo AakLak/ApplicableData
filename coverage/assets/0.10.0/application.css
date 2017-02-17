@@ -106,10 +106,6 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 */
 
-
-pre code {
-}
-
 pre .comment,
 pre .template_comment,
 pre .diff .header,
