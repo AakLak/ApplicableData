@@ -19,7 +19,7 @@ development:
 test:
   <<: *default
   #database: db/test_db
-  databse: travis_ci_test
+  databse: travis
 
 production:
   adapter: postgresql
