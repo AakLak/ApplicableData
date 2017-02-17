@@ -20,18 +20,17 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-#I ADDED THESE #
+# I ADDED THESE
 gem 'bootstrap-sass'
-gem 'bootstrap-table-rails' 
-gem 'font-awesome-sass'
+gem 'bootstrap-table-rails'
 gem 'devise'
+gem 'font-awesome-sass'
 gem 'american_date'
 gem 'csv-importer'
 gem 'puma'
-gem 'will_paginate', '~> 3.1.0'
 gem 'jquery-turbolinks'
-
-#I ADDED THESE #
+gem 'will_paginate', '~> 3.1.0'
+# END I ADDED THESE #
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -46,8 +45,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  #gem "better_errors"
-  #gem "binding_of_caller"
+  # gem "better_errors"
+  # gem "binding_of_caller"
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -56,23 +55,23 @@ group :development, :test do
   # Table Print
   gem 'hirb'
   gem 'rspec-rails', '~> 3.5'
-  gem 'simplecov', :require => false
-  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
   gem 'better_errors'
+  gem 'web-console', '~> 2.0'
   gem 'binding_of_caller'
+  gem 'brakeman', require: false
   gem 'bullet'
-  gem 'brakeman', :require => false
 end
 
 group :production do
-	gem 'pg',             '0.17.1'
+	gem 'pg', '0.17.1'
 	gem 'rails_12factor', '0.0.2'
 end
 
