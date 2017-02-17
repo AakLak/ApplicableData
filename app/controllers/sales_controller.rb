@@ -174,21 +174,20 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     if current_user
-    #@sale = Sale.new(sale_params)
-    @sale = current_user.sales.build(sale_params)
-    respond_to do |format|
-      if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-        format.json { render :show, status: :created, location: @sale }
-      else
-        format.html { render :new }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
+      @sale = current_user.sales.build(sale_params)
+      respond_to do |format|
+        if @sale.save
+          format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+          format.json { render :show, status: :created, location: @sale }
+        else
+          format.html { render :new }
+          format.json { render json: @sale.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path, notice: 'You must be logged in to do this'
     end
-  else
-    redirect_to root_path, notice: 'You must be logged in to do this'
   end
-end
 
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
@@ -260,8 +259,7 @@ end
 
     def require_login
       authenticate_user!
-
-      # flash.now[:alert] = 'You must be signed in to use this feature!'
+      flash.now[:alert] = 'You must be signed in to use this feature!'
     end
 
-  end
+end
