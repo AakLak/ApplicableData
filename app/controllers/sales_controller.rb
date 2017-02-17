@@ -224,16 +224,12 @@ end
     import = ImportSaleCSV.new(file: params[:file]) do
       after_build do |sale|
         sale.user_id = user_id
-          #refactor
-          skip! if sale.email == nil
-          skip! if sale.order_date == nil
-          skip! if sale.amount == nil
-        end
+        skip! if sale.email == nil
+        skip! if sale.order_date == nil
+        skip! if sale.amount == nil
       end
-      import.run!
-    # p "*" * 50
-    # p import.report.create_skipped_rows[0].row_array
-    # p "*" * 50
+    end
+    import.run!
     redirect_to lifecycle_grid_sales_path, notice: import.report.message
   end
 
@@ -242,25 +238,13 @@ end
     import = ImportSaleCSV.new(path: './public/uploads/gotcha.csv') do
       after_build do |sale|
         sale.user_id = user_id
-          #refactor
-          skip! if sale.email == nil
-          skip! if sale.order_date == nil
-          skip! if sale.amount == nil
-        end
+        skip! if sale.email == nil
+        skip! if sale.order_date == nil
+        skip! if sale.amount == nil
       end
-      import.run!
-      redirect_to lifecycle_grid_sales_path, notice: import.report.message
-
-    ### Old barebones CSV upload ###
-    # Sale.ftp_import(params[:domain], params[:directory], params[:ftp_user], params[:ftp_password], current_user.id)
-    # Net::FTP.open(params[:domain], params[:ftp_user], params[:ftp_password]) do |ftp|
-    #   ftp.passive = true
-    #   files = ftp.list
-    #   #ftp.chdir("/root_level/nested/")
-    #   ftp.chdir(params[:directory])
-    #   ftp.getbinaryfile("large_sample_data.csv", './public/uploads/gotcha.csv')
-    # end
-    
+    end
+    import.run!
+    redirect_to lifecycle_grid_sales_path, notice: import.report.message
   end
 
   private
