@@ -1,6 +1,7 @@
 # Applicable Data
 ***
 ![Alt](https://api.travis-ci.org/YoHoJo/ApplicableData.svg?branch=master "Build Status")
+![Alt](https://codeclimate.com/github/YoHoJo/ApplicableData.png "Code Climate")
 
 Applicable Data helps you determined your most valuable customers.
 
