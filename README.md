@@ -1,6 +1,7 @@
 # Applicable Data
 ***
 ![Alt](https://api.travis-ci.org/YoHoJo/ApplicableData.svg?branch=master "Build Status")
+
 Applicable Data helps you determined your most valuable customers.
 
 == README
