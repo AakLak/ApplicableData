@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # I ADDED THESE
+gem 'mapbox-rails', :git => "https://github.com/aai/mapbox-rails.git"
 gem 'bootstrap-sass'
 gem 'bootstrap-table-rails'
 gem 'devise'
@@ -71,7 +72,7 @@ group :development do
 end
 
 group :production do
-	gem 'pg', '0.17.1'
+	gem 'pg', '0.20.0'
 	gem 'rails_12factor', '0.0.2'
 end
 

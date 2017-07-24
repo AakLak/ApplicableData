@@ -1,0 +1,36 @@
+Rubocop
+https://github.com/bbatsov/rubocop
+
+
+Watir
+https://watir.com/
+
+
+Better-errors
+https://github.com/charliesome/better_errors
+
+https://i.stack.imgur.com/X514q.png
+https://camo.githubusercontent.com/3fa6840d5e20236b4f768d6ed4b42421ba7c2f21/68747470733a2f2f692e696d6775722e636f6d2f367a42474141622e706e67
+
+
+Pry
+https://github.com/pry/pry
+
+Devise
+https://github.com/plataformatec/devise
+
+Rails-Admin
+https://github.com/sferik/rails_admin
+
+Bullet
+https://github.com/flyerhzm/bullet
+
+SimpleCov
+https://github.com/colszowka/simplecov
+
+Will Paginate
+https://github.com/mislav/will_paginate
+- efficient
+https://i.stack.imgur.com/NXOjo.png
+
+

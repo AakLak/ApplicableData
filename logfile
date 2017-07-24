@@ -1,0 +1,28 @@
+LOG:  database system was shut down at 2017-04-26 01:21:06 PDT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  role "aakash" already exists
+STATEMENT:  CREATE ROLE aakash;
+ERROR:  database "apartmental_development" already exists
+STATEMENT:  CREATE DATABASE "apartmental_development" ENCODING = 'unicode'
+ERROR:  database "apartmental_test" already exists
+STATEMENT:  CREATE DATABASE "apartmental_test" ENCODING = 'unicode'
+ERROR:  duplicate key value violates unique constraint "addresses_pkey"
+DETAIL:  Key (id)=(4) already exists.
+STATEMENT:  INSERT INTO "addresses" ("id", "image_url", "street_number", "street_name", "street_type", "city", "state", "zipcode", "price", "bedrooms", "lat", "long", "walkscore", "built", "listing_url", "neighborhood", "crime_rate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"
+ERROR:  invalid input syntax for integer: "" at character 135
+STATEMENT:  SELECT "addresses".* FROM "addresses" WHERE "addresses"."city" = $1 AND "addresses"."bedrooms" = $2 AND (price > '1000') AND (price < '')
+FATAL:  database "db/development.sqlite3" does not exist
+ERROR:  syntax error at or near "." at character 33
+STATEMENT:  CREATE DATABASE "db/development"."sqlite3" ENCODING = 'utf8'
+FATAL:  database "fire_development" does not exist
+FATAL:  database "fire_development" does not exist
+ERROR:  database "fire_development" already exists
+STATEMENT:  CREATE DATABASE "fire_development" ENCODING = 'unicode'
+ERROR:  database "fire_test" already exists
+STATEMENT:  CREATE DATABASE "fire_test" ENCODING = 'unicode'
+ERROR:  floating-point exception
+DETAIL:  An invalid floating-point operation was signaled. This probably means an out-of-range result or an invalid operation, such as division by zero.
+ERROR:  floating-point exception
+DETAIL:  An invalid floating-point operation was signaled. This probably means an out-of-range result or an invalid operation, such as division by zero.

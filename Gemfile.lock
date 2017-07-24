@@ -1,5 +1,11 @@
+GIT
+  remote: https://github.com/aai/mapbox-rails.git
+  revision: faa06fee4a046ea4b3fb499422f2cef6244ca991
+  specs:
+    mapbox-rails (2.2.1)
+
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.2.6)
       actionpack (= 4.2.6)
@@ -131,8 +137,7 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
-    pg (0.17.1)
-    pg (0.17.1-x86-mingw32)
+    pg (0.20.0)
     pkg-config (1.1.7)
     puma (3.6.0)
     rack (1.6.4)
@@ -266,7 +271,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
-  pg (= 0.17.1)
+  mapbox-rails!
+  pg (= 0.20.0)
   puma
   rails (= 4.2.6)
   rails_12factor (= 0.0.2)
