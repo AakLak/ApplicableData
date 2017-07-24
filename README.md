@@ -4,32 +4,11 @@
 [![Code Climate](https://codeclimate.com/github/YoHoJo/ApplicableData.png)](https://codeclimate.com/github/YoHoJo/ApplicableData)
 
 Applicable Data helps you determined your most valuable customers.
+# Local or FTP File Upload
+[Applicable Data Upload](https://i.imgur.com/c7OWw9I.png)
 
-== README
+# Sales List View
+[Sales List View](https://i.imgur.com/df7muN8.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+# Customer Lifcycle Grid
+[Customer Lifecycle Grid](https://i.imgur.com/ZcNCwmc.png)
