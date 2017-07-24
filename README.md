@@ -5,10 +5,10 @@
 
 Applicable Data helps you determined your most valuable customers.
 # Local or FTP File Upload
-[Applicable Data Upload](https://i.imgur.com/c7OWw9I.png)
+![Applicable Data Upload](https://i.imgur.com/c7OWw9I.png)
 
 # Sales List View
-[Sales List View](https://i.imgur.com/df7muN8.png)
+![Sales List View](https://i.imgur.com/df7muN8.png)
 
 # Customer Lifcycle Grid
-[Customer Lifecycle Grid](https://i.imgur.com/ZcNCwmc.png)
+![Customer Lifecycle Grid](https://i.imgur.com/ZcNCwmc.png)
